@@ -8,21 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */; };
-		87ED7C912C18DA8D000B98F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C902C18DA8D000B98F9 /* ContentView.swift */; };
-		87ED7C932C18DA8D000B98F9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C922C18DA8D000B98F9 /* Item.swift */; };
+		87ED7C932C18DA8D000B98F9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C922C18DA8D000B98F9 /* City.swift */; };
 		87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7C942C18DA8F000B98F9 /* Assets.xcassets */; };
 		87ED7C982C18DA8F000B98F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7C972C18DA8F000B98F9 /* Preview Assets.xcassets */; };
 		87ED7CA12C18DBD7000B98F9 /* WeatherPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CA02C18DBD7000B98F9 /* WeatherPageView.swift */; };
 		87ED7CA32C18DBE7000B98F9 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CA22C18DBE7000B98F9 /* SearchPageView.swift */; };
 		87ED7CA72C18DC2E000B98F9 /* WeatherPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CA62C18DC2E000B98F9 /* WeatherPageViewModel.swift */; };
 		87ED7CA92C18DC43000B98F9 /* SearchPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CA82C18DC43000B98F9 /* SearchPageViewModel.swift */; };
+		87ED7CAC2C18DF24000B98F9 /* NetworkingService in Frameworks */ = {isa = PBXBuildFile; productRef = 87ED7CAB2C18DF24000B98F9 /* NetworkingService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87ED7C8B2C18DA8D000B98F9 /* Collaboration2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration2App.swift; sourceTree = "<group>"; };
-		87ED7C902C18DA8D000B98F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		87ED7C922C18DA8D000B98F9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		87ED7C922C18DA8D000B98F9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		87ED7C942C18DA8F000B98F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87ED7C972C18DA8F000B98F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		87ED7CA02C18DBD7000B98F9 /* WeatherPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPageView.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87ED7CAC2C18DF24000B98F9 /* NetworkingService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */,
-				87ED7C902C18DA8D000B98F9 /* ContentView.swift */,
-				87ED7C922C18DA8D000B98F9 /* Item.swift */,
 				87ED7C9F2C18DB8D000B98F9 /* Model */,
 				87ED7C9E2C18DB81000B98F9 /* Scenes */,
 				87ED7C942C18DA8F000B98F9 /* Assets.xcassets */,
@@ -92,6 +90,7 @@
 		87ED7C9F2C18DB8D000B98F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87ED7C922C18DA8D000B98F9 /* City.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +129,9 @@
 			dependencies = (
 			);
 			name = Collaboration2;
+			packageProductDependencies = (
+				87ED7CAB2C18DF24000B98F9 /* NetworkingService */,
+			);
 			productName = Collaboration2;
 			productReference = 87ED7C8B2C18DA8D000B98F9 /* Collaboration2.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +160,9 @@
 				Base,
 			);
 			mainGroup = 87ED7C822C18DA8D000B98F9;
+			packageReferences = (
+				87ED7CAA2C18DF24000B98F9 /* XCRemoteSwiftPackageReference "NetworkingService" */,
+			);
 			productRefGroup = 87ED7C8C2C18DA8D000B98F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -188,8 +193,7 @@
 				87ED7CA12C18DBD7000B98F9 /* WeatherPageView.swift in Sources */,
 				87ED7CA92C18DC43000B98F9 /* SearchPageViewModel.swift in Sources */,
 				87ED7CA72C18DC2E000B98F9 /* WeatherPageViewModel.swift in Sources */,
-				87ED7C912C18DA8D000B98F9 /* ContentView.swift in Sources */,
-				87ED7C932C18DA8D000B98F9 /* Item.swift in Sources */,
+				87ED7C932C18DA8D000B98F9 /* City.swift in Sources */,
 				87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		87ED7CAA2C18DF24000B98F9 /* XCRemoteSwiftPackageReference "NetworkingService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nuca01/NetworkingService";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		87ED7CAB2C18DF24000B98F9 /* NetworkingService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87ED7CAA2C18DF24000B98F9 /* XCRemoteSwiftPackageReference "NetworkingService" */;
+			productName = NetworkingService;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87ED7C832C18DA8D000B98F9 /* Project object */;
 }

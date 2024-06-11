@@ -8,6 +8,10 @@
 import Foundation
 
 struct Weather: Decodable {
+    let list: [WeatherData]
+}
+
+struct WeatherData: Decodable {
     let dt: Int?
     let main: Main?
     let weather: [WeatherInfo]?

@@ -10,7 +10,7 @@ import NetworkingService
 
 class WeatherPageViewModel: ObservableObject {
     //MARK: - Properties
-    @Published var weather: Weather?
+    @Published var weather: [WeatherData]?
     @Published var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
     
     private var url: String {
@@ -22,11 +22,11 @@ class WeatherPageViewModel: ObservableObject {
     }
     
     //MARK: - Methods
-    func fetchEpisodes() {
+    func fetch() {
         NetworkService.networkService.getData(urlString: url) { (result: Result<Weather, Error>) in
             switch result {
             case .success(let data):
-                self.weather = data
+                self.weather = data.list
             case .failure(let error):
                 print(error.localizedDescription)
             }

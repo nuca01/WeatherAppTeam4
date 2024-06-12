@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct SearchPageView: View {
-    @ObservedObject var viewModel: WeatherPageViewModel
+    @ObservedObject var viewModel: SearchPageViewModel
     @Binding var city: City
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Locations")
+            
+            CustomSearchBar(isSearching: $viewModel.isSearching, searchText: $viewModel.searchQuery)
+            
+            ScrollView{
+                CitiesList(list: viewModel.cities ?? [])
+            }
+        }
     }
 }
 
@@ -20,6 +28,6 @@ struct SearchPageView_Previews: PreviewProvider {
     static var previews: some View {
         @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
         
-        SearchPageView(viewModel: WeatherPageViewModel(), city: $city)
+        SearchPageView(viewModel: SearchPageViewModel(), city: $city)
     }
 }

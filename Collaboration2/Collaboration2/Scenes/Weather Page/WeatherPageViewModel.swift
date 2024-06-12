@@ -14,8 +14,8 @@ class WeatherPageViewModel: ObservableObject {
     @Published var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
     
     private var url: String {
-        let firstPart = "https://openweathermap.org/data/2.5/onecall?"
-        let lanLon = "\(city.latitude ?? 41.6934591)" + "&lon=" + "\(city.longitude ?? 44.8014495)"
+        let firstPart = "https://openweathermap.org/data/2.5/onecall?lat="
+        let lanLon = "\(city.latitude ?? 51.5085)" + "&lon=" + "\(city.longitude ?? -0.1257)"
         let appID = "&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02"
         
         return firstPart + lanLon + appID
@@ -51,9 +51,24 @@ class WeatherPageViewModel: ObservableObject {
         return Int(weather)
     }
     
-    func getRain() -> Double {
-        guard let weatherDaily = weather?.daily?.first else { return 0 }
-        guard let weather = weatherDaily.rain else { return 0 }
-        return weather
+    func getRain() -> Int {
+        guard let weather = weather?.daily?.first(where: { daily in
+            daily.rain != nil
+        }) else { return 0 }
+        
+        switch weather.rain! {
+            case 0.0:
+                return 0
+            case 0.1...1.0:
+                return 10
+            case 1.1...2.0:
+                return 20
+            case 2.1...5.0:
+                return 50
+            case 5.1...10.0:
+                return 80
+            default:
+                return 100
+            }
     }
 }

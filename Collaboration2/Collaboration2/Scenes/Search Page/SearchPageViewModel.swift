@@ -27,6 +27,11 @@ class SearchPageViewModel: ObservableObject {
         }
     }
     
+//    func fetchFromContext() {
+//        let fetchDescriptor: FetchDescriptor<City> = FetchDescriptor()
+//        favoriteMovies = (try? (modelContext.fetch(fetchDescriptor))) ?? []
+//    }
+//    
     private func url(with name: String) -> String {
         let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=VOEXrxYcGtySvZ0i1p8qU3q3EMW212hCTdotHR7s&name="
         let name = name

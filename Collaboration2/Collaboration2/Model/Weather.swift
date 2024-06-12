@@ -12,10 +12,11 @@ struct Weather: Decodable {
     let hourly: [Hourly]?
     let daily: [Daily]?
 }
+
 struct Hourly: Decodable {
-    let dt: String?
-    let temp: Temp?
-    let weather: WeatherIcon?
+    let dt: Int?
+    let temp: Double?
+    let weather: [WeatherIcon]?
 }
 
 struct Current: Decodable {
@@ -31,9 +32,9 @@ struct Current: Decodable {
 }
 
 struct Daily: Decodable {
-    let dt: String?
+    let dt: Int?
     let temp: Temp?
-    let weather: WeatherIcon?
+    let weather: [WeatherIcon]?
     let rain: Double?
 }
 

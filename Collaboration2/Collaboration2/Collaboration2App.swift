@@ -27,7 +27,7 @@ struct Collaboration2App: App {
     
     var body: some Scene {
         WindowGroup {
-            WeatherPageView(viewModel: WeatherPageViewModel())
+//            WeatherPageView(viewModel: WeatherPageViewModel())
             SearchPageView(viewModel: SearchPageViewModel(modelContext: sharedModelContainer.mainContext), city: $city)
         }
         .modelContainer(sharedModelContainer)

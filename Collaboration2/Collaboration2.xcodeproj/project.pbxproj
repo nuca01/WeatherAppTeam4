@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B9B5A742C19A26F009CBAFC /* RainFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5A722C19A26F009CBAFC /* RainFall.sks */; };
+		3B9B5A822C19E412009CBAFC /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5A812C19E412009CBAFC /* Stars.sks */; };
 		87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */; };
 		87ED7C932C18DA8D000B98F9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C922C18DA8D000B98F9 /* City.swift */; };
 		87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7C942C18DA8F000B98F9 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3B9B5A722C19A26F009CBAFC /* RainFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainFall.sks; sourceTree = "<group>"; };
+		3B9B5A812C19E412009CBAFC /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
 		87ED7C8B2C18DA8D000B98F9 /* Collaboration2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration2App.swift; sourceTree = "<group>"; };
 		87ED7C922C18DA8D000B98F9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				3B9B5A722C19A26F009CBAFC /* RainFall.sks */,
+				3B9B5A812C19E412009CBAFC /* Stars.sks */,
 			);
 			path = SpriteFiles;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				87ED7C982C18DA8F000B98F9 /* Preview Assets.xcassets in Resources */,
 				3B9B5A742C19A26F009CBAFC /* RainFall.sks in Resources */,
+				3B9B5A822C19E412009CBAFC /* Stars.sks in Resources */,
 				87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

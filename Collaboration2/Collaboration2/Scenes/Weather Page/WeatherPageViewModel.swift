@@ -55,6 +55,20 @@ class WeatherPageViewModel: ObservableObject {
         guard let weather = weather?.daily?.first(where: { daily in
             daily.rain != nil
         }) else { return 0 }
-        return Int(weather.rain! * 100)
+        
+        switch weather.rain! {
+            case 0.0:
+                return 0
+            case 0.1...1.0:
+                return 10
+            case 1.1...2.0:
+                return 20
+            case 2.1...5.0:
+                return 50
+            case 5.1...10.0:
+                return 80
+            default:
+                return 100
+            }
     }
 }

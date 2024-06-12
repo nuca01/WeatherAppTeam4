@@ -21,6 +21,10 @@ class WeatherPageViewModel: ObservableObject {
         return firstPart + lanLon + appID
     }
     
+    init() {
+        fetch()
+    }
+    
     //MARK: - Methods
     func fetch() {
         NetworkService.networkService.getData(urlString: url) { (result: Result<Weather, Error>) in
@@ -35,5 +39,20 @@ class WeatherPageViewModel: ObservableObject {
     
     func imageURL(url: String) -> URL? {
         URL(string: url)
+    }
+    
+    func getHumidity() -> Int {
+        guard let weather = weather?[0].main?.humidity else { return 0 }
+        return weather
+    } 
+    
+    func getWindSpeed() -> Int {
+        guard let weather = weather?[0].wind?.speed else { return 0 }
+        return Int(weather)
+    }
+    
+    func getRain() -> Int {
+        guard let weather = weather?[0].rain?.threeHours else { return 0 }
+        return Int(weather)
     }
 }

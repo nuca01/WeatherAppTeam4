@@ -6,19 +6,33 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct WeatherPageView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     @State var city: City?
     
     var body: some View {
-        DailyWeatherView(viewModel: viewModel)
+        ZStack{
+            
+//            SpriteView(scene: StarsView(), options: [.allowsTransparency])
+            
+            SpriteView(scene: RainView(), options: [.allowsTransparency])
+            
+            
+            ScrollView{
+               
+                Text("Hello, World!")
+            }
+        }
+        //DailyWeatherView(viewModel: viewModel)
     }
     
     init(viewModel: WeatherPageViewModel) {
         self.viewModel = viewModel
     }
 }
+
 
 #Preview {
     WeatherPageView(viewModel: WeatherPageViewModel())

@@ -8,23 +8,16 @@
 import Foundation
 import NetworkingService
 import Combine
+import SwiftData
 
 class SearchPageViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     var isSearching: Bool = false
-    var cities: [City]?
+    @Published var cities: [City]?
     private var cancellables = Set<AnyCancellable>()
     
-    private var url: String {
-        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=2Nj0rQe9WrqqjyTC495lglvc3lXqBKDqKWe6Wd2l&name="
-        let name = searchQuery
-        let limit = "&limit=30"
-        
-        return firstPart + name + limit
-    }
-    
-    private func fetch() {
-        NetworkService.networkService.getData(urlString: url) { (result: Result<[City], Error>) in
+    func fetch(with name: String) {
+        NetworkService.networkService.getData(urlString: url(with: name)) { (result: Result<[City], Error>) in
             switch result {
             case .success(let data):
                 self.cities = data
@@ -34,10 +27,18 @@ class SearchPageViewModel: ObservableObject {
         }
     }
     
+    private func url(with name: String) -> String {
+        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=VOEXrxYcGtySvZ0i1p8qU3q3EMW212hCTdotHR7s&name="
+        let name = name
+        let limit = "&limit=30"
+        
+        return firstPart + name + limit
+    }
+    
     private func addSubscribers() {
         $searchQuery
-            .sink(receiveValue: { _ in
-                self.fetch()
+            .sink(receiveValue: { searchText in
+                self.fetch(with: searchText)
             })
             .store(in: &cancellables)
     }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class City {
+final class City: Decodable {
     //MARK: - Properties
     let name: String?
     let latitude: Double?

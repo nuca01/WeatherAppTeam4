@@ -12,7 +12,15 @@ struct SearchPageView: View {
     @Binding var city: City
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Locations")
+            
+            CustomSearchBar(isSearching: $viewModel.isSearching, searchText: $viewModel.searchQuery)
+            
+            ScrollView{
+                CitiesList(list: viewModel.cities ?? [])
+            }
+        }
     }
 }
 

@@ -14,31 +14,21 @@ struct WeatherPageView: View {
     
     var body: some View {
         ZStack{
-            Text("Hello, World!")
+            
+//            SpriteView(scene: StarsView(), options: [.allowsTransparency])
+            
+            SpriteView(scene: RainView(), options: [.allowsTransparency])
+            
+            
+            ScrollView{
+               
+                Text("Hello, World!")
+            }
         }
-        SpriteView(scene: Stars(), options: [.allowsTransparency])
     }
     
     init(viewModel: WeatherPageViewModel) {
         self.viewModel = viewModel
-    }
-}
-
-class Stars: SKScene{
-    override func sceneDidLoad() {
-        
-        size = UIScreen.main.bounds.size
-        
-        scaleMode = .resizeFill
-        
-        anchorPoint = CGPoint(x: 0.5 , y: 0.5)
-        
-        backgroundColor = .clear
-        
-        let node = SKEmitterNode(fileNamed: "Stars.sks")!
-        
-        addChild(node)
-        node.particlePositionRange.dx = UIScreen.main.bounds.maxX
     }
 }
 

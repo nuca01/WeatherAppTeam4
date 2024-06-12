@@ -10,12 +10,12 @@
 		08C10D292C19B872004EADE3 /* DailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C10D282C19B872004EADE3 /* DailyWeatherView.swift */; };
 		08C10D2B2C19F1B2004EADE3 /* DetailsInfoForCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C10D2A2C19F1B2004EADE3 /* DetailsInfoForCurrentWeather.swift */; };
 		08C10D2D2C19F215004EADE3 /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C10D2C2C19F215004EADE3 /* LocationPicker.swift */; };
-		3B9B5A942C1A2271009CBAFC /* RainFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5A932C1A2271009CBAFC /* RainFall.sks */; };
 		3B9B5A962C1A22A7009CBAFC /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5A952C1A22A6009CBAFC /* Snow.sks */; };
 		3B9B5A982C1A22B1009CBAFC /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5A972C1A22B1009CBAFC /* Stars.sks */; };
 		3B9B5A9B2C1A22F9009CBAFC /* RainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9B5A9A2C1A22F9009CBAFC /* RainView.swift */; };
 		3B9B5A9D2C1A234D009CBAFC /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9B5A9C2C1A234D009CBAFC /* StarsView.swift */; };
 		3B9B5A9F2C1A2384009CBAFC /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9B5A9E2C1A2384009CBAFC /* SnowView.swift */; };
+		3B9B5AA32C1A26F8009CBAFC /* RainFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B9B5AA22C1A26F8009CBAFC /* RainFall.sks */; };
 		87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */; };
 		87ED7C932C18DA8D000B98F9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C922C18DA8D000B98F9 /* City.swift */; };
 		87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7C942C18DA8F000B98F9 /* Assets.xcassets */; };
@@ -39,12 +39,12 @@
 		08C10D282C19B872004EADE3 /* DailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherView.swift; sourceTree = "<group>"; };
 		08C10D2A2C19F1B2004EADE3 /* DetailsInfoForCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInfoForCurrentWeather.swift; sourceTree = "<group>"; };
 		08C10D2C2C19F215004EADE3 /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
-		3B9B5A932C1A2271009CBAFC /* RainFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = RainFall.sks; path = ../../../../../Downloads/RainFall.sks; sourceTree = "<group>"; };
 		3B9B5A952C1A22A6009CBAFC /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
 		3B9B5A972C1A22B1009CBAFC /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
 		3B9B5A9A2C1A22F9009CBAFC /* RainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainView.swift; sourceTree = "<group>"; };
 		3B9B5A9C2C1A234D009CBAFC /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		3B9B5A9E2C1A2384009CBAFC /* SnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
+		3B9B5AA22C1A26F8009CBAFC /* RainFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainFall.sks; sourceTree = "<group>"; };
 		87ED7C8B2C18DA8D000B98F9 /* Collaboration2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration2App.swift; sourceTree = "<group>"; };
 		87ED7C922C18DA8D000B98F9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 		3B9B5A8E2C1A21EE009CBAFC /* Spite Kit */ = {
 			isa = PBXGroup;
 			children = (
+				3B9B5AA22C1A26F8009CBAFC /* RainFall.sks */,
 				3B9B5A972C1A22B1009CBAFC /* Stars.sks */,
 				3B9B5A952C1A22A6009CBAFC /* Snow.sks */,
-				3B9B5A932C1A2271009CBAFC /* RainFall.sks */,
 			);
 			path = "Spite Kit";
 			sourceTree = "<group>";
@@ -253,9 +253,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B9B5A982C1A22B1009CBAFC /* Stars.sks in Resources */,
-				3B9B5A942C1A2271009CBAFC /* RainFall.sks in Resources */,
 				87ED7C982C18DA8F000B98F9 /* Preview Assets.xcassets in Resources */,
 				3B9B5A962C1A22A7009CBAFC /* Snow.sks in Resources */,
+				3B9B5AA32C1A26F8009CBAFC /* RainFall.sks in Resources */,
 				87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

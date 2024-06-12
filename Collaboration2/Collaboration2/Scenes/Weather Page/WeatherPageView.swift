@@ -15,9 +15,9 @@ struct WeatherPageView: View {
     var body: some View {
         ZStack{
                    
-                   SpriteView(scene: StarsView(), options: [.allowsTransparency])
-                   
-//                   SpriteView(scene: RainView(), options: [.allowsTransparency])
+//                   SpriteView(scene: StarsView(), options: [.allowsTransparency])
+//                   
+                   SpriteView(scene: RainView(), options: [.allowsTransparency])
             
 //            SpriteView(scene: SnowView(), options: [.allowsTransparency])
                    

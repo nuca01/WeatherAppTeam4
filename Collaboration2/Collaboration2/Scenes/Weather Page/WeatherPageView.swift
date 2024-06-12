@@ -25,6 +25,7 @@ struct WeatherPageView: View {
                 Text("Hello, World!")
             }
         }
+        //DailyWeatherView(viewModel: viewModel)
     }
     
     init(viewModel: WeatherPageViewModel) {

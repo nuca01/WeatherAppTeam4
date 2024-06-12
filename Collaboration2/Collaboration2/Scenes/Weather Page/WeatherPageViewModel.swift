@@ -10,13 +10,13 @@ import NetworkingService
 
 class WeatherPageViewModel: ObservableObject {
     //MARK: - Properties
-    @Published var weather: [WeatherData]?
+    @Published var weather: Weather?
     @Published var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
     
     private var url: String {
-        let firstPart = "https://api.openweathermap.org/data/2.5/forecast?lat="
+        let firstPart = "https://openweathermap.org/data/2.5/onecall?"
         let lanLon = "\(city.latitude ?? 41.6934591)" + "&lon=" + "\(city.longitude ?? 44.8014495)"
-        let appID = "&appid=2bc0404bf7932948f77efddde0175888&units=metric"
+        let appID = "&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02"
         
         return firstPart + lanLon + appID
     }
@@ -30,7 +30,7 @@ class WeatherPageViewModel: ObservableObject {
         NetworkService.networkService.getData(urlString: url) { (result: Result<Weather, Error>) in
             switch result {
             case .success(let data):
-                self.weather = data.list
+                self.weather = data
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -42,17 +42,18 @@ class WeatherPageViewModel: ObservableObject {
     }
     
     func getHumidity() -> Int {
-        guard let weather = weather?[0].main?.humidity else { return 0 }
+        guard let weather = weather?.current?.humidity else { return 0 }
         return weather
     } 
     
     func getWindSpeed() -> Int {
-        guard let weather = weather?[0].wind?.speed else { return 0 }
+        guard let weather = weather?.current?.windSpeed else { return 0 }
         return Int(weather)
     }
     
-    func getRain() -> Int {
-        guard let weather = weather?[0].rain?.threeHours else { return 0 }
-        return Int(weather)
+    func getRain() -> Double {
+        guard let weatherDaily = weather?.daily?.first else { return 0 }
+        guard let weather = weatherDaily.rain else { return 0 }
+        return weather
     }
 }

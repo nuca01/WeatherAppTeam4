@@ -8,6 +8,7 @@
 import Foundation
 import NetworkingService
 import Combine
+import SwiftData
 
 class SearchPageViewModel: ObservableObject {
     @Published var searchQuery: String = ""

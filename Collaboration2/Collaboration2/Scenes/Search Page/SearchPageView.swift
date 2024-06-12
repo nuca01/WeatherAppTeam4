@@ -25,6 +25,7 @@ struct SearchPageView: View {
                         .modelContext(context)
                 } else {
                     weatherList
+                        .padding(.horizontal)
                         .onAppear(perform: {
                             self.viewModel.fetchFromContext()
                         })
@@ -35,7 +36,6 @@ struct SearchPageView: View {
     
     private var weatherList: some View {
         VStack(spacing: 15) {
-            
             ForEach(viewModel.citiesAndWeathers) { weather in
                 weatherCellWith(name: weather.name, temperature: weather.temperature, description: weather.info ?? "")
             }

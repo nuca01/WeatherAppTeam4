@@ -19,24 +19,25 @@ struct CitiesList: View {
             ForEach(list) { city in
                 HStack {
                     Text(city.name ?? "city name unavailable")
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-                        .background(tappedCity == city ? Color.yellow : Color.clear)
-                        .onTapGesture {
-                            tappedCity = city
-                            if !favoriteCities.contains(where: { favoriteCity in
-                                favoriteCity.latitude == city.latitude && favoriteCity.longitude == city.longitude
-                            }) {
-                                context.insert(city)
-                            }
-                            
-                            print(favoriteCities.count)
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                tappedCity = nil
-                            }
-                        }
+                        .frame(alignment: .leading)
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     
                     Spacer()
+                }
+                .background(tappedCity == city ? Color.black.opacity(0.2) : Color.clear)
+                .onTapGesture {
+                    tappedCity = city
+                    if !favoriteCities.contains(where: { favoriteCity in
+                        favoriteCity.latitude == city.latitude && favoriteCity.longitude == city.longitude
+                    }) {
+                        context.insert(city)
+                    }
+                    
+                    print(favoriteCities.count)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        tappedCity = nil
+                    }
                 }
             }
         }

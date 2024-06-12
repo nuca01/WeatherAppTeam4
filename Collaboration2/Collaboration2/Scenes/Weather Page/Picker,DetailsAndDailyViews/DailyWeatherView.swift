@@ -1,5 +1,5 @@
 //
-//  PickerAndWeeklyWeatherView.swift
+//  DailyWeatherView.swift
 //  Collaboration2
 //
 //  Created by Sandro Gelashvili on 12.06.24.
@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct DailyWeatherView: View {
+    @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
         ZStack {
-            VStack {
-                DetailsInfoForCurrentWeather(rainPercent: 20,
-                                             humidityPercent: 20,
-                                             windSpeed: 20)
+            VStack() {
+                LocationPicker()
+                    .offset(x: 140)
+                
+                DetailsInfoForCurrentWeather(viewModel: viewModel)
                 
             VStack(alignment: .leading) {
                 ForEach(DaysOfWeek.allCases, id: \.self) { day in
@@ -26,8 +28,7 @@ struct DailyWeatherView: View {
             }
             .background(.ultraThinMaterial,
                         in: RoundedRectangle(cornerRadius: 20,
-                                             style: .continuous)
-            )
+                                             style: .continuous))
             .padding()
         }
         }
@@ -97,40 +98,13 @@ struct DailyWeatherView: View {
         case wednesday = "Wednesday"
         case thursday = "Thursday"
         case friday = "Friday"
+        case saturday = "Saturday"
+        case sunday = "Sunday"
     }
 }
 
-struct DetailsInfoForCurrentWeather: View {
-    var rainPercent: Int
-    var humidityPercent: Int
-    var windSpeed: Int
-    
-    var body: some View {
-            HStack {
-                Image("Rain")
-                Text("\(rainPercent)%")
-                
-                Spacer()
-                
-                Image("Thermo")
-                Text("\(humidityPercent)%")
-                
-                Spacer()
-                
-                Image("Wind")
-                Text("\(windSpeed)km/h")
-            }
-            .foregroundStyle(.white)
-            .padding(10)
-            .padding(.horizontal, 10)
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 20,
-                                             style: .continuous)
-            )
-            .padding()
-    }
-}
+
 
 #Preview {
-    WeeklyWeatherView()
+    DailyWeatherView(viewModel: WeatherPageViewModel())
 }

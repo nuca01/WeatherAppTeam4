@@ -12,7 +12,7 @@ struct WeatherPageView: View {
     @State var city: City?
     
     var body: some View {
-        Text("Hello, World!")
+        DailyWeatherView(viewModel: viewModel)
     }
     
     init(viewModel: WeatherPageViewModel) {

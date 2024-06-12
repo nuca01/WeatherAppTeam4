@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct DetailsInfoForCurrentWeather: View {
+    @ObservedObject var viewModel: WeatherPageViewModel
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            HStack {
+                Image("Rain")
+                Text("\(viewModel.getRain())%")
+                
+                Spacer()
+                
+                Image("Thermo")
+                Text("\(viewModel.getHumidity())%")
+                
+                Spacer()
+                
+                Image("Wind")
+                Text("\(viewModel.getWindSpeed())km/h")
+            }
+            .foregroundStyle(.white)
+            .padding(10)
+            .padding(.horizontal, 10)
+            .background(.ultraThinMaterial,
+                        in: RoundedRectangle(cornerRadius: 20,
+                                             style: .continuous)
+            )
+            .padding()
     }
 }
 
-#Preview {
-    DetailsInfoForCurrentWeather()
-}
+//#Preview {
+//    DetailsInfoForCurrentWeather()
+//}

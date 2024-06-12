@@ -17,6 +17,8 @@
 		87ED7CA92C18DC43000B98F9 /* SearchPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CA82C18DC43000B98F9 /* SearchPageViewModel.swift */; };
 		87ED7CAC2C18DF24000B98F9 /* NetworkingService in Frameworks */ = {isa = PBXBuildFile; productRef = 87ED7CAB2C18DF24000B98F9 /* NetworkingService */; };
 		87ED7CAE2C18E23A000B98F9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CAD2C18E23A000B98F9 /* Weather.swift */; };
+		CBEF02ED2C19BFFA001DCAB5 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF02EC2C19BFFA001DCAB5 /* Sun.swift */; };
+		CBEF02EF2C19D061001DCAB5 /* Birds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF02EE2C19D061001DCAB5 /* Birds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		87ED7CA62C18DC2E000B98F9 /* WeatherPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPageViewModel.swift; sourceTree = "<group>"; };
 		87ED7CA82C18DC43000B98F9 /* SearchPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewModel.swift; sourceTree = "<group>"; };
 		87ED7CAD2C18E23A000B98F9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		CBEF02EC2C19BFFA001DCAB5 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
+		CBEF02EE2C19D061001DCAB5 /* Birds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		87ED7CA42C18DBEC000B98F9 /* Weather Page */ = {
 			isa = PBXGroup;
 			children = (
+				CBEF02E92C19BFC1001DCAB5 /* Sun, Birds, Clouds */,
 				87ED7CA02C18DBD7000B98F9 /* WeatherPageView.swift */,
 				87ED7CA62C18DC2E000B98F9 /* WeatherPageViewModel.swift */,
 			);
@@ -114,6 +119,15 @@
 				87ED7CA82C18DC43000B98F9 /* SearchPageViewModel.swift */,
 			);
 			path = "Search Page";
+			sourceTree = "<group>";
+		};
+		CBEF02E92C19BFC1001DCAB5 /* Sun, Birds, Clouds */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF02EC2C19BFFA001DCAB5 /* Sun.swift */,
+				CBEF02EE2C19D061001DCAB5 /* Birds.swift */,
+			);
+			path = "Sun, Birds, Clouds";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +209,9 @@
 				87ED7CA32C18DBE7000B98F9 /* SearchPageView.swift in Sources */,
 				87ED7CA12C18DBD7000B98F9 /* WeatherPageView.swift in Sources */,
 				87ED7CA92C18DC43000B98F9 /* SearchPageViewModel.swift in Sources */,
+				CBEF02ED2C19BFFA001DCAB5 /* Sun.swift in Sources */,
 				87ED7CA72C18DC2E000B98F9 /* WeatherPageViewModel.swift in Sources */,
+				CBEF02EF2C19D061001DCAB5 /* Birds.swift in Sources */,
 				87ED7C932C18DA8D000B98F9 /* City.swift in Sources */,
 				87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */,
 				87ED7CAE2C18E23A000B98F9 /* Weather.swift in Sources */,

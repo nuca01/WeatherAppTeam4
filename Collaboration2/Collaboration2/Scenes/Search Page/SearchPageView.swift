@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchPageView: View {
-    @ObservedObject var viewModel: WeatherPageViewModel
+    @ObservedObject var viewModel: SearchPageViewModel
     @Binding var city: City
     
     var body: some View {
@@ -20,6 +20,6 @@ struct SearchPageView_Previews: PreviewProvider {
     static var previews: some View {
         @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
         
-        SearchPageView(viewModel: WeatherPageViewModel(), city: $city)
+        SearchPageView(viewModel: SearchPageViewModel(), city: $city)
     }
 }

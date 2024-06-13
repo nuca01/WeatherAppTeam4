@@ -84,4 +84,3 @@ struct SearchPageView: View {
     return SearchPageView(viewModel: SearchPageViewModel(modelContext: container.mainContext), city: $city)
         .modelContainer(container)
 }
-

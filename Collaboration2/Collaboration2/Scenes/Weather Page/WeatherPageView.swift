@@ -14,14 +14,12 @@ struct WeatherPageView: View {
     
     var body: some View {
         ZStack {
-            
             AllAnimationView(weather: "13n")
             
             ScrollView{
                 DailyWeatherView(viewModel: viewModel)
             }
         }
-        
     }
     
     init(viewModel: WeatherPageViewModel) {

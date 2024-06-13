@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
-
+ 
 struct LocationPicker: View {
     @State private var buttonIsClicked: Bool = false
-    @State private var selectedOption: City? = City(name: "Tbilisi", latitude: 44.45, longitude: 44.45)
+    @State private var selectedOption: City = City(name: "Tbilisi",
+                                                    latitude: 44.45,
+                                                    longitude: 44.45)
+    @State private var showSearchPage = false
+    @Environment(\.modelContext) var context
     
     let mockData = [
         City(name: "Tbilisi", latitude: 44.45, longitude: 44.45),
@@ -19,33 +23,55 @@ struct LocationPicker: View {
     ]
     
     var body: some View {
-            HStack {
-                Menu {
-                    ForEach(mockData) { city in
+        NavigationStack {
+           
+                HStack {
+                    Menu {
+                        ForEach(mockData) { city in
+                            Button(action: {
+                                self.selectedOption = city
+                                self.buttonIsClicked.toggle()
+                            }) {
+                                HStack {
+                                    Image(systemName: "checkmark")
+                                    if selectedOption.name == city.name {
+                                    }
+                                    Text(city.name ?? "N/A")
+                                }
+                            }
+                        }
+                        
                         Button(action: {
-                            self.selectedOption = city
-                            self.buttonIsClicked.toggle()
+                            showSearchPage.toggle()
                         }) {
-                            Text(city.name ?? "N/A")
+                            HStack(){
+                                Text("Add New Location")
+                                Image(systemName: "location.fill")
+                            }
                         }
-                    }
-                } label: {
-                    ZStack {
-                        HStack {
-                            Image("Map")
-                            Text(selectedOption?.name ?? "Select a City")
-                            Image("arrowDown")
+                        
+                    } label: {
+                        ZStack {
+                            HStack {
+                                Image("Map")
+                                Text(selectedOption.name ?? "Select a City")
+                                Image("arrowDown")
+                            }
+                            .foregroundStyle(.white)
+                            .padding(5)
+                            .padding(.horizontal, 10)
+                            .padding(.trailing, 10)
+                            .background(.ultraThinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                         }
-                        .foregroundStyle(.white)
-                        .padding(5)
-                        .padding(.horizontal, 10)
-                        .padding(.trailing, 10)
-                        .background(.ultraThinMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 }
-            }
+                .navigationDestination(isPresented: $showSearchPage) {
+                    SearchPageView(viewModel: SearchPageViewModel(modelContext: context), city: $selectedOption )
+                }
+            .padding()
         }
+    }
 }
 #Preview {
     LocationPicker()

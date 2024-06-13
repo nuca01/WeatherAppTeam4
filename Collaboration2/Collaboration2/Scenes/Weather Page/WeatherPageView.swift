@@ -11,6 +11,7 @@ import SpriteKit
 struct WeatherPageView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     @State var city: City = City(name: "Tbilisi", latitude: 41.6, longitude: 44.8)
+    
     var body: some View {
         VStack {
             

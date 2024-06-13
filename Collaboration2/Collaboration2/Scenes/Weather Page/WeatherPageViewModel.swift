@@ -72,6 +72,16 @@ class WeatherPageViewModel: ObservableObject {
             }
     }
     
+    func getDailyWeather() -> [Daily] {
+        guard let dailyWeather = weather?.daily else { return [] }
+        return dailyWeather
+    }
+    
+    func getWeatherIconURL(icon: String) -> URL? {
+        let urlString = "https://openweathermap.org/img/wn/\(icon)@2x.png"
+        return URL(string: urlString)
+    }
+    
     func getCurrentWeatherIcon() -> String {
         if let weatherIcon = weather?.current?.weather?[0].icon
         {

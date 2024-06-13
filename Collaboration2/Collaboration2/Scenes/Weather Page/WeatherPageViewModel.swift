@@ -44,7 +44,7 @@ class WeatherPageViewModel: ObservableObject {
     func getHumidity() -> Int {
         guard let weather = weather?.current?.humidity else { return 0 }
         return weather
-    }
+    } 
     
     func getWindSpeed() -> Int {
         guard let weather = weather?.current?.windSpeed else { return 0 }
@@ -57,31 +57,21 @@ class WeatherPageViewModel: ObservableObject {
         }) else { return 0 }
         
         switch weather.rain! {
-        case 0.0:
-            return 0
-        case 0.1...1.0:
-            return 10
-        case 1.1...2.0:
-            return 20
-        case 2.1...5.0:
-            return 50
-        case 5.1...10.0:
-            return 80
-        default:
-            return 100
-        }
+            case 0.0:
+                return 0
+            case 0.1...1.0:
+                return 10
+            case 1.1...2.0:
+                return 20
+            case 2.1...5.0:
+                return 50
+            case 5.1...10.0:
+                return 80
+            default:
+                return 100
+            }
     }
     
-    func getDailyWeather() -> [Daily] {
-        guard let dailyWeather = weather?.daily else { return [] }
-        return dailyWeather
-    }
-    
-    func getWeatherIconURL(icon: String) -> URL? {
-        let urlString = "https://openweathermap.org/img/wn/\(icon)@2x.png"
-        return URL(string: urlString)
-    }
-  
     func getCurrentWeatherIcon() -> String {
         if let weatherIcon = weather?.current?.weather?[0].icon
         {

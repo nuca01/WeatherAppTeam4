@@ -46,6 +46,7 @@ struct DailyWeatherView: View {
                 Spacer()
                 
                 Text("\(Int(maxTemp))°C")
+                
                 Text("\(Int(minTemp))°C")
                     .foregroundStyle(Color(.systemGray5))
             }

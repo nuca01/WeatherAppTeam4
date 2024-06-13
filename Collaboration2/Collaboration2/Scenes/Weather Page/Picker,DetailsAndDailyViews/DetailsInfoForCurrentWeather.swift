@@ -10,30 +10,54 @@ import SwiftUI
 struct DetailsInfoForCurrentWeather: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     
-    
     var body: some View {
-            HStack {
-                Image("Rain")
-                Text("\(viewModel.getRain())%")
-                
-                Spacer()
-                
-                Image("Thermo")
-                Text("\(viewModel.getHumidity())%")
-                
-                Spacer()
-                
-                Image("Wind")
-                Text("\(viewModel.getWindSpeed())km/h")
-            }
-            .foregroundStyle(.white)
-            .padding(10)
-            .padding(.horizontal, 10)
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 20,
-                                             style: .continuous)
-            )
-            .padding()
+        HStack {
+            rainView
+            
+            Spacer()
+            
+            thermoView
+            
+            Spacer()
+            
+            windView
+        }
+        .foregroundStyle(.white)
+        .padding(10)
+        .padding(.horizontal, 10)
+        .background(.ultraThinMaterial,
+                    in: RoundedRectangle(cornerRadius: 20,
+                                         style: .continuous)
+        )
+        .padding()
+    }
+    
+    private var rainView: some View {
+        cellForDetails(
+            weather: "Rain",
+            description: "\(viewModel.getRain())%"
+        )
+    }
+    
+    private var thermoView: some View {
+        cellForDetails(
+            weather: "Thermo",
+            description: "\(viewModel.getHumidity())%"
+        )
+    }
+    
+    private var windView: some View {
+        cellForDetails(
+            weather: "Wind",
+            description: "\(viewModel.getWindSpeed())km/h"
+        )
+    }
+    
+    private func cellForDetails(weather: String, description: String ) -> some View {
+        HStack {
+            Image(weather)
+            Text(description)
+        }
     }
 }
 

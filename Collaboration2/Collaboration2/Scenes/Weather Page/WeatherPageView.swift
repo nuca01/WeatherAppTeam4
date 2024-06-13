@@ -19,10 +19,8 @@ struct WeatherPageView: View {
             
             ScrollView{
                 DailyWeatherView(viewModel: viewModel)
-                //                       Text("Hello, World!")
             }
         }
-//        .background(Color.gray)
         
     }
     

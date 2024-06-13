@@ -1,5 +1,5 @@
 //
-//  RainView.swift
+//  SnowView.swift
 //  Collaboration2
 //
 //  Created by vano Kvakhadze on 12.06.24.
@@ -8,21 +8,22 @@
 import SwiftUI
 import SpriteKit
 
-class RainView: SKScene{
+
+class SnowView: SKScene {
     override func sceneDidLoad() {
         
         size = UIScreen.main.bounds.size
         
         scaleMode = .resizeFill
         
-        anchorPoint = CGPoint(x: 1 , y: 1)
+        anchorPoint = CGPoint(x: 0.5 , y: 1)
         
         backgroundColor = .clear
         
         
-        if let node = SKEmitterNode(fileNamed: "RainFall.sks"){
+        if let node = SKEmitterNode(fileNamed: "Snow.sks"){
             addChild(node)
-            node.position = CGPoint(x: 0.5, y: 0.5)
+            node.particlePositionRange.dx = UIScreen.main.bounds.maxX
         }
     }
 }

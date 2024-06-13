@@ -7,18 +7,12 @@
 
 import SwiftUI
 
-struct Birds: View {
+struct BirdsView: View {
     @State private var moveRight = false
 
     var body: some View {
         GeometryReader { geometry in
             HStack {
-//                Circle()
-//                    .fill(LinearGradient(colors: [Color(hex: 0xFFD88B), Color(hex: 0xFFA900)], startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
-//                    .rotationEffect(.degrees(360))
-//                    .padding(.leading, -70)
-//                    .frame(width: 138.18, height: 138.18)
-                
                 birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.0)
                 VStack(spacing: 30) {
                     birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.3)
@@ -31,15 +25,6 @@ struct Birds: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 200)
-//            .background {
-//                LinearGradient(stops: [
-//                            .init(color: Color(hex: 0x2DB0DD), location: 0),
-//                            .init(color: Color(hex: 0x8EADE1), location: 1)
-//                                        ],
-//                               startPoint: UnitPoint(x: 0.5, y: 0),
-//                               endPoint: UnitPoint(x: 0.5, y: 1))
-//                .ignoresSafeArea()
-//            }
             .onAppear {
                 startAnimations()
             }
@@ -83,5 +68,5 @@ extension Color {
 }
 
 #Preview {
-    Birds()
+    BirdsView()
 }

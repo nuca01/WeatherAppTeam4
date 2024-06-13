@@ -10,18 +10,20 @@ import SpriteKit
 
 struct WeatherPageView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
-    @State var city: City?
-    
+    @State var city: City = City(name: "Tbilisi", latitude: 41.6, longitude: 44.8)
     var body: some View {
-        ZStack {
+        VStack {
             
-            AllAnimationView(weather: "13n")
+//            AllAnimationView(weather: "13n")
             
-            ScrollView{
+            ScrollView {
+                LocationPicker(selectedOption: $city)
+                
+                DetailsInfoForCurrentWeather(viewModel: viewModel)
+                
                 DailyWeatherView(viewModel: viewModel)
             }
         }
-        
     }
     
     init(viewModel: WeatherPageViewModel) {

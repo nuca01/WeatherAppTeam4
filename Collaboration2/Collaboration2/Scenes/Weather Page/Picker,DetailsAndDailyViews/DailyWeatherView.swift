@@ -11,32 +11,18 @@ struct DailyWeatherView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
-        ZStack {
-            VStack() {
-                LocationPicker()
-                    .offset(x: 140)
-                
-                DetailsInfoForCurrentWeather(viewModel: viewModel)
-                
-            VStack(alignment: .leading) {
-                ForEach(DaysOfWeek.allCases, id: \.self) { day in
-                    WeeklyWeatherCell(imageForWeatherIcon: "image",
-                                      maxTemp: 20,
-                                      minTemp: 15,
-                                      day: day)
-                }
+        VStack(alignment: .leading) {
+            ForEach(DaysOfWeek.allCases, id: \.self) { day in
+                WeeklyWeatherCell(imageForWeatherIcon: "image",
+                                  maxTemp: 20,
+                                  minTemp: 15,
+                                  day: day)
             }
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 20,
-                                             style: .continuous))
-            .padding()
         }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(LinearGradient(colors: [Color(#colorLiteral(red: 0.1897571981, green: 0.6920755506, blue: 0.8686286211, alpha: 1)), Color(#colorLiteral(red: 0.55633533, green: 0.6781123877, blue: 0.8838557601, alpha: 1))],
-//                                   startPoint: .top,
-//                                   endPoint: .bottom))
-        .edgesIgnoringSafeArea(.all)
+        .background(.ultraThinMaterial,
+                    in: RoundedRectangle(cornerRadius: 20,
+                                         style: .continuous))
+        .padding()
     }
     
     private struct WeeklyWeatherCell: View {

@@ -71,4 +71,13 @@ class WeatherPageViewModel: ObservableObject {
                 return 100
             }
     }
+    
+    func getCurrentWeatherIcon() -> String {
+        if let weatherIcon = weather?.current?.weather?[0].icon
+        {
+            weatherIcon
+        } else {
+            ""
+        }
+    }
 }

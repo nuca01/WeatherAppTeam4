@@ -13,20 +13,14 @@ struct WeatherPageView: View {
     @State var city: City?
     
     var body: some View {
-        ZStack{
-                   
-//                   SpriteView(scene: StarsView(), options: [.allowsTransparency])
-//                   
-                   SpriteView(scene: RainView(), options: [.allowsTransparency])
+        ZStack {
             
-//            SpriteView(scene: SnowView(), options: [.allowsTransparency])
-                   
-                   ScrollView{
-                       DailyWeatherView(viewModel: viewModel)
-//                       Text("Hello, World!")
-                   }
-               }
-        .background(Color.gray)
+            AllAnimationView(weather: "13n")
+            
+            ScrollView{
+                DailyWeatherView(viewModel: viewModel)
+            }
+        }
         
     }
     

@@ -12,10 +12,18 @@ struct SearchPageView: View {
     @ObservedObject var viewModel: SearchPageViewModel
     @Binding var city: City
     @Environment(\.modelContext) var context
+    @Query var favoriteCities: [City]
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack {
-            Text("Locations")
+        VStack(spacing: 15) {
+            HStack {
+                Text("Locations")
+                    .font(.system(size: 34, weight: .bold))
+                
+                Spacer()
+            }
+            .padding(.horizontal, 10)
             
             CustomSearchBar(isSearching: $viewModel.isSearching, searchText: $viewModel.searchQuery)
             
@@ -37,7 +45,25 @@ struct SearchPageView: View {
     private var weatherList: some View {
         VStack(spacing: 15) {
             ForEach(viewModel.citiesAndWeathers) { weather in
-                weatherCellWith(name: weather.name, temperature: weather.temperature, description: weather.info ?? "")
+                weatherCellWith(
+                    name: weather.name,
+                    temperature: weather.temperature, 
+                    description: weather.info ?? ""
+                )
+                .onTapGesture {
+                    city = favoriteCities.first(where: { city in
+                        city.id == weather.id
+                    })!
+                    
+                    dismiss()
+                }
+            }
+            
+            if viewModel.citiesAndWeathers.count != favoriteCities.count {
+                ForEach(favoriteCities) {_ in
+                    ProgressView()
+                        .frame(height: 77)
+                }
             }
         }
     }

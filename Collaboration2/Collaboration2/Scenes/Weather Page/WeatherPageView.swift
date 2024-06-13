@@ -14,16 +14,27 @@ struct WeatherPageView: View {
     @State var showSearchPage: Bool = false
     @Environment(\.modelContext) var context
     
+    init(viewModel: WeatherPageViewModel) {
+        self.viewModel = viewModel
+        disableTextOfNavigationBackButton()
+    }
     
     var body: some View {
         NavigationStack {
             ZStack {
-                AllAnimationView(weather: "13n")
+                AllAnimationView(weather: "50n")
                 
                 VStack {
                     ScrollView {
-                        LocationPicker(selectedOption: $city, showSearchPage: $showSearchPage)
-//                            .frame(width: 100, height: 100)
+                        HStack {
+                            Spacer()
+                            
+                            LocationPicker(selectedOption: $city, showSearchPage: $showSearchPage)
+                                .padding(.top, 60)
+                                .offset(x: 50)
+                        }
+                        
+                        CurrentWeatherView(viewModel: viewModel)
                         
                         DetailsInfoForCurrentWeather(viewModel: viewModel)
                         
@@ -39,11 +50,18 @@ struct WeatherPageView: View {
                 SearchPageView(viewModel: SearchPageViewModel(modelContext: context),
                                city: $city)
             }
+            .ignoresSafeArea()
         }
+        .accentColor(.black)
     }
     
-    init(viewModel: WeatherPageViewModel) {
-        self.viewModel = viewModel
+    private func disableTextOfNavigationBackButton() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        let backButtonAppearance = UIBarButtonItemAppearance()
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        appearance.backButtonAppearance = backButtonAppearance
+        UINavigationBar.appearance().standardAppearance = appearance
     }
 }
 

@@ -90,4 +90,22 @@ class WeatherPageViewModel: ObservableObject {
             ""
         }
     }
+    
+    func getCurrentTemperature() -> Int {
+        if let weatherIcon = weather?.current?.temp {
+            Int(weatherIcon)
+        } else {
+            0
+        }
+    }
+    
+    func getTodayMinMaxTemperature(min: Bool) -> Int {
+        if (min) {
+            guard let weather = weather?.daily?[0].temp?.min else { return 0 }
+            return Int(weather)
+        } else {
+            guard let weather = weather?.daily?[0].temp?.max else { return 0 }
+            return Int(weather)
+        }
+    }
 }

@@ -26,6 +26,7 @@ struct CloudView: View {
                     CloudCell(startingAt: cloud.position, duration: cloud.duration, screenSize: geometry.size, size: size, imageName: imageName, direction: cloud.direction)
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear {
                 let numberOfClouds = cloudSetHalf ? 14 : 30
                 let verticalRange: ClosedRange<CGFloat> = cloudSetHalf ? 0...(geometry.size.height / 3) : 0...geometry.size.height

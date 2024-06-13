@@ -23,11 +23,13 @@ struct Current: Decodable {
     let humidity: Int?
     let windSpeed: Double?
     let temp: Double?
+    let weather: [WeatherIcon]?
     
     enum CodingKeys: String, CodingKey {
         case humidity
         case windSpeed = "wind_speed"
         case temp
+        case weather
     }
 }
 

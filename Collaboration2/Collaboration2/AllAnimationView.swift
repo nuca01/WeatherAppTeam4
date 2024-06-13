@@ -26,6 +26,7 @@
 //50d clouds(full)
 
 import SwiftUI
+import _SpriteKit_SwiftUI
 
 struct AllAnimationView: View {
     var weather: String
@@ -39,15 +40,21 @@ struct AllAnimationView: View {
         case "01d":
             ZStack {
                 SunMoonView()
-                // birds animation
+                VStack {
+                    Birds()
+                    
+                    Spacer()
+                }
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopDay, .linearClearBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "01n":
             ZStack {
+                SpriteView(scene: StarsView(), options: [.allowsTransparency])
+                    .scaleEffect(2)
+                
                 SunMoonView(sun: false)
-                // stars animation
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopNight, .linearClearBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -98,7 +105,7 @@ struct AllAnimationView: View {
             )
         case "09d":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
             }
             .background(
@@ -106,7 +113,7 @@ struct AllAnimationView: View {
             )
         case "09n":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
             }
             .background(
@@ -114,7 +121,7 @@ struct AllAnimationView: View {
             )
         case "10d":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
                 SunMoonView()
             }
@@ -123,7 +130,7 @@ struct AllAnimationView: View {
             )
         case "10n":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
                 SunMoonView(sun: false)
             }
@@ -132,7 +139,7 @@ struct AllAnimationView: View {
             )
         case "11d":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
             }
             .background(
@@ -140,7 +147,7 @@ struct AllAnimationView: View {
             )
         case "11n":
             ZStack {
-                RainAnimationView()
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
                 CloudAnimationView(cloudSetHalf: true)
             }
             .background(
@@ -148,18 +155,24 @@ struct AllAnimationView: View {
             )
         case "13d":
             ZStack {
-                SnowAnimationView()
                 CloudAnimationView(cloudSetHalf: true)
                 SunMoonView()
+                
+                SpriteView(scene: SnowView(), options: [.allowsTransparency])
+                    .scaleEffect(1.2)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearSnowTopDay, .linearSnowBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "13n":
             ZStack {
-                SnowAnimationView()
                 CloudAnimationView(cloudSetHalf: true)
+                
                 SunMoonView(sun: false)
+                
+                SpriteView(scene: SnowView(), options: [.allowsTransparency])
+                    .scaleEffect(1.2)
+                
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearSnowTopNight, .linearSnowBottomNight]), startPoint: .top, endPoint: .bottom)

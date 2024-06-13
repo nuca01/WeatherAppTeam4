@@ -8,7 +8,7 @@ import SwiftUI
 import SpriteKit
 
 
-class StarsView: SKScene{
+class StarsView: SKScene {
     override func sceneDidLoad() {
         
         size = UIScreen.main.bounds.size

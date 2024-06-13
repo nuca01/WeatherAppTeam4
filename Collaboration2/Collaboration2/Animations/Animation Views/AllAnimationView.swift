@@ -26,6 +26,7 @@
 //50d clouds(full)
 
 import SwiftUI
+import _SpriteKit_SwiftUI
 
 struct AllAnimationView: View {
     var weather: String
@@ -39,15 +40,21 @@ struct AllAnimationView: View {
         case "01d":
             ZStack {
                 SunMoonView()
-                // birds animation
+                VStack {
+                    BirdsView()
+                    
+                    Spacer()
+                }
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopDay, .linearClearBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "01n":
             ZStack {
+                SpriteView(scene: StarsView(), options: [.allowsTransparency])
+                    .scaleEffect(2)
+                
                 SunMoonView(sun: false)
-                // stars animation
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopNight, .linearClearBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -55,7 +62,7 @@ struct AllAnimationView: View {
         case "02d":
             ZStack {
                 SunMoonView()
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -63,59 +70,59 @@ struct AllAnimationView: View {
         case "02n":
             ZStack {
                 SunMoonView(sun: false)
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "03d":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "03n":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "04d":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "04n":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "09d":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopDay, .linearRainBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "09n":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopNight, .linearRainBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "10d":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
                 SunMoonView()
             }
             .background(
@@ -123,8 +130,8 @@ struct AllAnimationView: View {
             )
         case "10n":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
                 SunMoonView(sun: false)
             }
             .background(
@@ -132,48 +139,54 @@ struct AllAnimationView: View {
             )
         case "11d":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopDay, .linearRainBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "11n":
             ZStack {
-                RainAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                SpriteView(scene: RainView(), options: [.allowsTransparency])
+                CloudView(cloudSetHalf: true)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopNight, .linearRainBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "13d":
             ZStack {
-                SnowAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                CloudView(cloudSetHalf: true)
                 SunMoonView()
+                
+                SpriteView(scene: SnowView(), options: [.allowsTransparency])
+                    .scaleEffect(1.2)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearSnowTopDay, .linearSnowBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "13n":
             ZStack {
-                SnowAnimationView()
-                CloudAnimationView(cloudSetHalf: true)
+                CloudView(cloudSetHalf: true)
+                
                 SunMoonView(sun: false)
+                
+                SpriteView(scene: SnowView(), options: [.allowsTransparency])
+                    .scaleEffect(1.2)
+                
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearSnowTopNight, .linearSnowBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "50d":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "50n":
             ZStack {
-                CloudAnimationView()
+                CloudView()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)

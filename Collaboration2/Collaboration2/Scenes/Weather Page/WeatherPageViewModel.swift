@@ -81,5 +81,13 @@ class WeatherPageViewModel: ObservableObject {
         let urlString = "https://openweathermap.org/img/wn/\(icon)@2x.png"
         return URL(string: urlString)
     }
-    
+  
+    func getCurrentWeatherIcon() -> String {
+        if let weatherIcon = weather?.current?.weather?[0].icon
+        {
+            weatherIcon
+        } else {
+            ""
+        }
+    }
 }

@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct CloudAnimationView: View {
+struct CloudView: View {
     @State private var clouds: [Cloud] = []
     var cloudSetHalf: Bool
     
@@ -22,7 +22,8 @@ struct CloudAnimationView: View {
                     let width = CGFloat.random(in: 50...140)
                     let size = CGSize(width: width, height: width * 0.6)
                     let imageName = Bool.random() ? "cloud1" : "cloud2"
-                    CloudView(startingAt: cloud.position, duration: cloud.duration, screenSize: geometry.size, size: size, imageName: imageName, direction: cloud.direction)
+                    
+                    CloudCell(startingAt: cloud.position, duration: cloud.duration, screenSize: geometry.size, size: size, imageName: imageName, direction: cloud.direction)
                 }
             }
             .onAppear {
@@ -38,7 +39,7 @@ struct CloudAnimationView: View {
     }
 }
 
-struct CloudView: View {
+struct CloudCell: View {
     @State private var position: CGPoint
     @State private var opacity: Double = 1.0
     private let duration: Double

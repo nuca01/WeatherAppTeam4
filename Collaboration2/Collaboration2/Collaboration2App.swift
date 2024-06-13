@@ -23,9 +23,12 @@ struct Collaboration2App: App {
         }
     }()
 
+    @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
+    
     var body: some Scene {
         WindowGroup {
-            WeatherPageView(viewModel: WeatherPageViewModel())
+//            WeatherPageView(viewModel: WeatherPageViewModel())
+            SearchPageView(viewModel: SearchPageViewModel(modelContext: sharedModelContainer.mainContext), city: $city)
         }
         .modelContainer(sharedModelContainer)
     }

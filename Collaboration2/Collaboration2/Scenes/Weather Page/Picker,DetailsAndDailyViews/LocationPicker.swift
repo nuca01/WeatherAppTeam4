@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+ 
 struct LocationPicker: View {
     @State private var buttonIsClicked: Bool = false
     @State private var selectedOption: City = City(name: "Tbilisi",
@@ -73,9 +73,6 @@ struct LocationPicker: View {
         }
     }
 }
-
-
-
 #Preview {
     LocationPicker()
 }

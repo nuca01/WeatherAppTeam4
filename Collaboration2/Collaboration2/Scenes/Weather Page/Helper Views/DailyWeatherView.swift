@@ -11,19 +11,38 @@ struct DailyWeatherView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
+            if let daily = viewModel.weather?.daily, !daily.isEmpty {
                 ForEach(viewModel.getDailyWeather().prefix(8), id: \.dt) { daily in
                     WeeklyWeatherCell(
                         imageURL: viewModel.getWeatherIconURL(icon: daily.weather?.first?.icon ?? "N/A"),
                         maxTemp: daily.temp?.max ?? 0,
                         minTemp: daily.temp?.min ?? 0,
                         date: Date(timeIntervalSince1970: TimeInterval(daily.dt ?? 0)))
+                    .frame(height: 60)
+                }
+            } else {
+                ForEach(0..<8) { _ in
+                    loaderView
                 }
             }
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 20,
-                                             style: .continuous))
-            .padding()
+            
+        }
+        .background(.ultraThinMaterial,
+                    in: RoundedRectangle(cornerRadius: 20,
+                                         style: .continuous))
+        .padding()
+    }
+    
+    private var loaderView: some View {
+        HStack {
+            Spacer()
+            
+            ProgressView()
+                .frame(height: 60)
+            
+            Spacer()
+        }
     }
     
     private struct WeeklyWeatherCell: View {
@@ -39,20 +58,30 @@ struct DailyWeatherView: View {
                 
                 Spacer()
                 
-               AsyncImageForIcon(width: 30,
-                                 height: 30,
+               AsyncImageForIcon(width: 60,
+                                 height: 60,
                                  imageURL: imageURL)
                 
                 Spacer()
                 
-                Text("\(Int(maxTemp))°C")
+                celciusGenerator(with: Int(maxTemp))
                 
-                Text("\(Int(minTemp))°C")
-                    .foregroundStyle(Color(.systemGray5))
+                celciusGenerator(with: Int(minTemp))
+                    .foregroundStyle(Color(.systemGray5).opacity(0.4))
             }
             .font(.system(size: 18, weight: .medium))
             .foregroundStyle(.white)
-            .padding()
+            .padding(.horizontal)
+        }
+        
+        private func celciusGenerator(with number: Int) -> some View {
+            HStack(alignment: .top, spacing: 1) {
+                Text("\(Int(number))")
+                    .font(.system(size: 18, weight: .medium))
+                
+                Text("°C")
+                    .font(.system(size: 9, weight: .medium))
+            }
         }
         
         private func dayOfWeek(from date: Date) -> String {

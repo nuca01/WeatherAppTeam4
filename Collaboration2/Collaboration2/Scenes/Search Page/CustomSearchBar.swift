@@ -19,7 +19,6 @@ struct CustomSearchBar: View {
                 cancelButton
             }
         }
-        .padding(.top)
     }
     
     private var searchField: some View {

@@ -47,7 +47,7 @@ class SearchPageViewModel: ObservableObject {
     
     func fetchFromContext() {
         citiesAndWeathers = []
-        let fetchDescriptor: FetchDescriptor<City> = FetchDescriptor()
+        let fetchDescriptor: FetchDescriptor<City> = FetchDescriptor(sortBy: [SortDescriptor(\.name)])
         let favoritedCities = (try? (modelContext.fetch(fetchDescriptor))) ?? []
         for city in favoritedCities {
             fetch(with: city)
@@ -63,7 +63,7 @@ class SearchPageViewModel: ObservableObject {
     }
     
     private func url(with name: String) -> String {
-        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=5r92WDXLYrJS6M41n4uASadX9qa8HDl7p3iDjGwD&name="
+        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=2IV2mg2XUticUWdQNWI6XmSbNVb2qO8DmveNoL2N&name="
         let name = name
         let limit = "&limit=30"
         
@@ -81,5 +81,6 @@ class SearchPageViewModel: ObservableObject {
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
         addSubscribers()
+        fetchFromContext()
     }
 }

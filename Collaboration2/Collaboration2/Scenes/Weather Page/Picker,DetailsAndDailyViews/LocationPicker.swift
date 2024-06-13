@@ -9,10 +9,11 @@ import SwiftUI
 
 struct LocationPicker: View {
     @State private var buttonIsClicked: Bool = false
-    @State private var selectedOption: City? = City(name: "Tbilisi",
+    @State private var selectedOption: City = City(name: "Tbilisi",
                                                     latitude: 44.45,
                                                     longitude: 44.45)
     @State private var showSearchPage = false
+    @Environment(\.modelContext) var context
     
     let mockData = [
         City(name: "Tbilisi", latitude: 44.45, longitude: 44.45),
@@ -33,7 +34,7 @@ struct LocationPicker: View {
                             }) {
                                 HStack {
                                     Image(systemName: "checkmark")
-                                    if selectedOption?.name == city.name {
+                                    if selectedOption.name == city.name {
                                     }
                                     Text(city.name ?? "N/A")
                                 }
@@ -53,7 +54,7 @@ struct LocationPicker: View {
                         ZStack {
                             HStack {
                                 Image("Map")
-                                Text(selectedOption?.name ?? "Select a City")
+                                Text(selectedOption.name ?? "Select a City")
                                 Image("arrowDown")
                             }
                             .foregroundStyle(.white)
@@ -66,9 +67,8 @@ struct LocationPicker: View {
                     }
                 }
                 .navigationDestination(isPresented: $showSearchPage) {
-                    SearchPageView(viewModel: SearchPageViewModel())
+                    SearchPageView(viewModel: SearchPageViewModel(modelContext: context), city: $selectedOption )
                 }
-            
             .padding()
         }
     }

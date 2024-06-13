@@ -39,6 +39,7 @@ class SearchPageViewModel: ObservableObject {
                     info: data.current?.weather?[0].description, 
                     id: city.id
                 ))
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

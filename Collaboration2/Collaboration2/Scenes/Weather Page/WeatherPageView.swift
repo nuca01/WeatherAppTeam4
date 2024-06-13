@@ -14,8 +14,7 @@ struct WeatherPageView: View {
     
     var body: some View {
         ZStack {
-            
-            AllAnimationView(weather: "13n")
+            AllAnimationView(weather: viewModel.getCurrentWeatherIcon())
             
             ScrollView{
                 DailyWeatherView(viewModel: viewModel)

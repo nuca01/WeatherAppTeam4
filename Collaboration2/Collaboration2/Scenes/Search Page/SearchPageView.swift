@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchPageView: View {
     @ObservedObject var viewModel: SearchPageViewModel
-    @Binding var city: City
+//    @Binding var city: City
     
     var body: some View {
         VStack {
@@ -24,10 +24,10 @@ struct SearchPageView: View {
     }
 }
 
-struct SearchPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
-        
-        SearchPageView(viewModel: SearchPageViewModel(), city: $city)
-    }
-}
+//struct SearchPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
+//        
+//        SearchPageView(viewModel: SearchPageViewModel(), city: $city)
+//    }
+//}

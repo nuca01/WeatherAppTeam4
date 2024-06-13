@@ -22,8 +22,7 @@ struct WeatherPageView: View {
 //            SpriteView(scene: SnowView(), options: [.allowsTransparency])
                    
                    ScrollView{
-                       DailyWeatherView(viewModel: viewModel)
-//                       Text("Hello, World!")
+                       Text("Hello, World!")
                    }
                }
         .background(Color.gray)

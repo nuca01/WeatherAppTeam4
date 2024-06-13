@@ -11,19 +11,14 @@ struct DailyWeatherView: View {
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
-        ZStack {
-            VStack() {
-                LocationPicker()
-                    .offset(x: 140)
-                
-                DetailsInfoForCurrentWeather(viewModel: viewModel)
-                
+        VStack() {
             VStack(alignment: .leading) {
-                ForEach(DaysOfWeek.allCases, id: \.self) { day in
-                    WeeklyWeatherCell(imageForWeatherIcon: "image",
-                                      maxTemp: 20,
-                                      minTemp: 15,
-                                      day: day)
+                ForEach(viewModel.getDailyWeather().prefix(8), id: \.dt) { daily in
+                    WeeklyWeatherCell(
+                        imageURL: viewModel.getWeatherIconURL(icon: daily.weather?.first?.icon ?? "N/A"),
+                        maxTemp: daily.temp?.max ?? 0,
+                        minTemp: daily.temp?.min ?? 0,
+                        date: Date(timeIntervalSince1970: TimeInterval(daily.dt ?? 0)))
                 }
             }
             .background(.ultraThinMaterial,
@@ -31,51 +26,55 @@ struct DailyWeatherView: View {
                                              style: .continuous))
             .padding()
         }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LinearGradient(colors: [Color(#colorLiteral(red: 0.1897571981, green: 0.6920755506, blue: 0.8686286211, alpha: 1)), Color(#colorLiteral(red: 0.55633533, green: 0.6781123877, blue: 0.8838557601, alpha: 1))],
-                                   startPoint: .top,
-                                   endPoint: .bottom))
-        .edgesIgnoringSafeArea(.all)
     }
     
     private struct WeeklyWeatherCell: View {
-        var imageForWeatherIcon: String
-        var maxTemp: Int
-        var minTemp: Int
-        let day: DaysOfWeek
+        var imageURL: URL?
+        var maxTemp: Double
+        var minTemp: Double
+        let date: Date
         
         var body: some View {
             HStack () {
-                Text(day.rawValue)
-                    .frame(width: 97,alignment: .leading)
+                Text(dayOfWeek(from: date))
+                    .frame(width: 97, alignment: .leading)
                 
                 Spacer()
                 
-                AsyncImageForIcon(imageForWeatherIcon: imageForWeatherIcon)
+               AsyncImageForIcon(width: 30,
+                                 height: 30,
+                                 imageURL: imageURL)
                 
                 Spacer()
                 
-                Text("\(maxTemp)°C")
-                Text("\(minTemp)°C")
+                Text("\(Int(maxTemp))°C")
+                Text("\(Int(minTemp))°C")
                     .foregroundStyle(Color(.systemGray5))
             }
             .font(.system(size: 18, weight: .medium))
             .foregroundStyle(.white)
             .padding()
         }
+        
+        private func dayOfWeek(from date: Date) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
+        }
     }
     
     private struct AsyncImageForIcon: View {
-        var imageForWeatherIcon: String
+        var width: CGFloat
+        var height: CGFloat
+        var imageURL: URL?
         
         var body: some View {
-            AsyncImage(url: URL(string: imageForWeatherIcon)) { phase in
+            AsyncImage(url: imageURL) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30,height: 30)
+                        .frame(width: width, height: height)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     
                 } else {
@@ -91,18 +90,7 @@ struct DailyWeatherView: View {
             }
         }
     }
-    
-    enum DaysOfWeek: String, CaseIterable {
-        case monday = "Monday"
-        case tuesday = "Tuesday"
-        case wednesday = "Wednesday"
-        case thursday = "Thursday"
-        case friday = "Friday"
-        case saturday = "Saturday"
-        case sunday = "Sunday"
-    }
 }
-
 
 
 #Preview {

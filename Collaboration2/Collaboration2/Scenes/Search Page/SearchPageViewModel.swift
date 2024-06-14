@@ -11,9 +11,7 @@ import Combine
 import SwiftData
 
 class SearchPageViewModel: ObservableObject {
-    
     // MARK: - Properties
-    
     @Published var searchQuery: String = ""
     @Published var isSearching: Bool = false
     @Published var cities: [City]?
@@ -23,7 +21,6 @@ class SearchPageViewModel: ObservableObject {
     
         
     // MARK: - Initialiser
-    
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
         addSubscribers()
@@ -31,7 +28,6 @@ class SearchPageViewModel: ObservableObject {
     }
     
     // MARK: - Helper Functions
-    
     func fetch(with name: String) {
         print("fetched for searchPageVM name")
         NetworkService.networkService.getData(urlString: url(with: name)) { (result: Result<[City], Error>) in

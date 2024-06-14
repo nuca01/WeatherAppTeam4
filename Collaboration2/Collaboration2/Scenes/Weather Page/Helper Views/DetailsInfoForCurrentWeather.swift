@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailsInfoForCurrentWeather: View {
+    //MARK: - Properties
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
@@ -52,6 +53,7 @@ struct DetailsInfoForCurrentWeather: View {
         )
     }
     
+    //MARK: - Method
     private func cellForDetails(weather: String, description: String ) -> some View {
         HStack {
             Image(weather)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyWeatherView: View {
+    //MARK: - Properties
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
@@ -41,6 +42,8 @@ struct DailyWeatherView: View {
             Spacer()
         }
     }
+    
+    //MARK: - Inner Structs
     
     private struct WeeklyWeatherCell: View {
         var imageURL: URL?

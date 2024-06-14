@@ -28,12 +28,8 @@ struct CitiesList: View {
                 .background(tappedCity == city ? Color.black.opacity(0.2) : Color.clear)
                 .onTapGesture {
                     tappedCity = city
-                    if !favoriteCities.contains(where: { favoriteCity in
-                        favoriteCity.latitude == city.latitude && favoriteCity.longitude == city.longitude
-                    }) {
-                        context.insert(city)
-                    }
                     
+                    addFavoriteCity(city: city)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         tappedCity = nil
@@ -42,6 +38,14 @@ struct CitiesList: View {
                     cityAdded()
                 }
             }
+        }
+    }
+    
+    private func addFavoriteCity(city: City) {
+        if !favoriteCities.contains(where: { favoriteCity in
+            favoriteCity.latitude == city.latitude && favoriteCity.longitude == city.longitude
+        }) {
+            context.insert(city)
         }
     }
     

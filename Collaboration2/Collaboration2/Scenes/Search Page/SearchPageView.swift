@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SearchPageView: View {
+    //MARK: - Properties
     @ObservedObject var viewModel: SearchPageViewModel
     @Binding var city: City
     @Environment(\.modelContext) var context
@@ -73,6 +74,7 @@ struct SearchPageView: View {
         }
     }
     
+    //MARK: - Method
     private func weatherCellWith(name: String?, temperature: Double?, description: String) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {

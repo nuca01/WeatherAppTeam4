@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct HourlyWeather: View {
-    
     @ObservedObject var viewModel: WeatherPageViewModel
     
     var body: some View {
-        VStack{
-            
+        VStack {
             HStack(alignment: .top){
                 Text("Today")
                     .font(.system(size: 20))
@@ -38,28 +36,5 @@ struct HourlyWeather: View {
         .frame(height: 217)
         .background(.ultraThinMaterial)
         .cornerRadius(20)
-    }
-}
-
-struct HourlyImage: View {
-    var imageForWeatherIcon: String
-    
-    var body: some View {
-        AsyncImage(url: URL(string: imageForWeatherIcon)) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(.ultraThinMaterial)
-                        .frame(width: 30, height: 30)
-                        .shadow(radius: 20)
-                    
-                    ProgressView()
-                }
-            }
-        }
     }
 }

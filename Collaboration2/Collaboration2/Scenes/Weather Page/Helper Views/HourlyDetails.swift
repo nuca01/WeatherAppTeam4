@@ -20,9 +20,14 @@ struct HourlyDetails: View {
                             .foregroundStyle(.white)
                             .padding(.top, 13)
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 2)
+                        
                         Spacer()
                         
-                        HourlyImage(imageForWeatherIcon: viewModel.getWeatherIconURL(icon: hourly.weather?[0].icon ?? ""))
+                        HourlyImage(imageForWeatherIcon: viewModel.imageURL(
+                            url: viewModel.getWeatherIconURL(
+                                icon: hourly.weather?[0].icon ?? "")
+                        )
+                        )
                             .frame(width: 43, height: 43)
                         
                         Spacer()
@@ -80,6 +85,34 @@ struct HourlyDetails: View {
             } else {
                 Color.clear
             }
+        }
+    }
+}
+
+
+struct HourlyImage: View {
+    var imageForWeatherIcon: URL?
+    
+    var body: some View {
+        AsyncImage(url: imageForWeatherIcon) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } else {
+                loader
+            }
+        }
+    }
+    
+    private var loader: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(.ultraThinMaterial)
+                .frame(width: 30, height: 30)
+                .shadow(radius: 20)
+            
+            ProgressView()
         }
     }
 }

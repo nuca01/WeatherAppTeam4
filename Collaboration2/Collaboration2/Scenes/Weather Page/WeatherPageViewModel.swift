@@ -11,7 +11,7 @@ import NetworkingService
 class WeatherPageViewModel: ObservableObject {
     //MARK: - Properties
     @Published var weather: Weather?
-    @Published var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
+    @Published var city: City = City(name: "Tbilisi", latitude: 41.7225, longitude: 44.7925)
     
     private var url: String {
         let firstPart = "https://openweathermap.org/data/2.5/onecall?lat="
@@ -27,14 +27,11 @@ class WeatherPageViewModel: ObservableObject {
     
     //MARK: - Methods
     func fetch() {
-        print(url)
         NetworkService.networkService.getData(urlString: url) { (result: Result<Weather, Error>) in
             switch result {
             case .success(let data):
-                print(data)
                 self.weather = data
             case .failure(let error):
-                print("weatherpageVM")
                 print(error.localizedDescription)
             }
         }

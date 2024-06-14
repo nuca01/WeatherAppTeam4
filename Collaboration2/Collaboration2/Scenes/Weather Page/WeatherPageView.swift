@@ -47,8 +47,10 @@ struct WeatherPageView: View {
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopDay, .linearClearBottomDay]), startPoint: .top, endPoint: .bottom)
             )
             .onChange(of: city) { oldValue, newValue in
-                viewModel.city = city
-                viewModel.fetch()
+                if !(newValue.name == "Select a City") {
+                    viewModel.city = city
+                    viewModel.fetch()
+                }
             }
             .navigationDestination(isPresented: $showSearchPage) {
                 //will only create once we need it

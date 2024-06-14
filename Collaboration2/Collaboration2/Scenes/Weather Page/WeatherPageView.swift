@@ -9,29 +9,27 @@ import SwiftUI
 import SpriteKit
 
 struct WeatherPageView: View {
+    //MARK: - Stored Properties
     @ObservedObject var viewModel: WeatherPageViewModel
-    @State var city: City = City(name: "Tbilisi", latitude: 41.6, longitude: 44.8)
+    @State var city: City = City(name: "Tbilisi", latitude: 41.7225, longitude: 44.7925)
     @State var showSearchPage: Bool = false
     @Environment(\.modelContext) var context
     
+    //MARK: - Initializer
     init(viewModel: WeatherPageViewModel) {
         self.viewModel = viewModel
         disableTextOfNavigationBackButton()
     }
     
+    //MARK: - Computed Properties
     var body: some View {
         NavigationStack {
             ZStack {
-                AllAnimationView(weather: "50n")
+                AllAnimationView(weather: viewModel.getCurrentWeatherIcon())
+                
                 ScrollView {
                     VStack(spacing: 22) {
-                        HStack {
-                            Spacer()
-                            
-                            LocationPicker(selectedOption: $city, showSearchPage: $showSearchPage)
-                                .padding(EdgeInsets(top: 60, leading: 0, bottom: 35, trailing: 0))
-                                .offset(x: 64)
-                        }
+                        picker
                         
                         CurrentWeatherView(viewModel: viewModel)
                         
@@ -45,11 +43,15 @@ struct WeatherPageView: View {
                 }
                 
             }
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.linearClearTopDay, .linearClearBottomDay]), startPoint: .top, endPoint: .bottom)
+            )
             .onChange(of: city) { oldValue, newValue in
                 viewModel.city = city
                 viewModel.fetch()
             }
             .navigationDestination(isPresented: $showSearchPage) {
+                //will only create once we need it
                 if showSearchPage {
                     SearchPageView(viewModel: SearchPageViewModel(modelContext: context), city: $city)
                 }
@@ -59,11 +61,24 @@ struct WeatherPageView: View {
         .accentColor(.black)
     }
     
+    private var picker: some View {
+        HStack {
+            Spacer()
+            
+            LocationPicker(selectedOption: $city, showSearchPage: $showSearchPage)
+                .padding(EdgeInsets(top: 60, leading: 0, bottom: 35, trailing: 0))
+                .offset(x: 64)
+        }
+    }
+    
+    //MARK: - Function
     private func disableTextOfNavigationBackButton() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
+        
         let backButtonAppearance = UIBarButtonItemAppearance()
         backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        
         appearance.backButtonAppearance = backButtonAppearance
         UINavigationBar.appearance().standardAppearance = appearance
     }

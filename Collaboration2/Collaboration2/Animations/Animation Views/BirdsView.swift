@@ -14,10 +14,12 @@ struct BirdsView: View {
         GeometryReader { geometry in
             HStack {
                 birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.0)
+                
                 VStack(spacing: 30) {
                     birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.3)
                     birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.6)
                 }
+                
                 VStack(spacing: 30) {
                     birdView(offsetAmount: geometry.size.width * 0.25, delay: 0.9)
                     birdView(offsetAmount: geometry.size.width * 0.25, delay: 1.2)
@@ -53,20 +55,4 @@ struct BirdsView: View {
             }
         }
     }
-}
-
-extension Color {
-    init(hex: UInt) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xFF) / 255,
-            green: Double((hex >> 8) & 0xFF) / 255,
-            blue: Double(hex & 0xFF) / 255,
-            opacity: 1
-        )
-    }
-}
-
-#Preview {
-    BirdsView()
 }

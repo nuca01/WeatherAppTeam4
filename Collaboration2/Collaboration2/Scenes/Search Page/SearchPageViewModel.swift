@@ -29,21 +29,17 @@ class SearchPageViewModel: ObservableObject {
     
     // MARK: - Helper Functions
     func fetch(with name: String) {
-        print("fetched for searchPageVM name")
         NetworkService.networkService.getData(urlString: url(with: name)) { (result: Result<[City], Error>) in
             switch result {
             case .success(let data):
                 self.cities = data
             case .failure(let error):
-                print("searvhPageVM withString")
-
                 print(error.localizedDescription)
             }
         }
     }
     
     private func fetch(with city: City) {
-        print("fetched for searchPageVM city")
         NetworkService.networkService.getData(urlString: url(with: city)) { (result: Result<BriefWeather, Error>) in
             switch result {
             case .success(let data):
@@ -54,7 +50,6 @@ class SearchPageViewModel: ObservableObject {
                     id: city.id
                 ))
             case .failure(let error):
-                print("searvhPageVM with city")
                 print(error.localizedDescription)
             }
         }
@@ -78,7 +73,7 @@ class SearchPageViewModel: ObservableObject {
     }
     
     private func url(with name: String) -> String {
-        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=2IV2mg2XUticUWdQNWI6XmSbNVb2qO8DmveNoL2N&name="
+        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=QN3C0M9hoUiXG4f9FzrMnvCKhhCEd5aP5NmHHve9&name="
         let name = name
         let limit = "&limit=30"
         

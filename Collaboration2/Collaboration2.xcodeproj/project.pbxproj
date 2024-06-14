@@ -18,6 +18,7 @@
 		873698162C1A50A000918560 /* CityAndWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873698152C1A50A000918560 /* CityAndWeather.swift */; };
 		873698192C1B9B2300918560 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873698182C1B9B2200918560 /* CurrentWeatherView.swift */; };
 		8736981C2C1BCFD900918560 /* Cloud.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8736981B2C1BCFD900918560 /* Cloud.sks */; };
+		8736981E2C1C670B00918560 /* Cloud2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8736981D2C1C670B00918560 /* Cloud2.sks */; };
 		87ED7C8F2C18DA8D000B98F9 /* Collaboration2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */; };
 		87ED7C932C18DA8D000B98F9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7C922C18DA8D000B98F9 /* City.swift */; };
 		87ED7C952C18DA8F000B98F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7C942C18DA8F000B98F9 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		873698152C1A50A000918560 /* CityAndWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAndWeather.swift; sourceTree = "<group>"; };
 		873698182C1B9B2200918560 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		8736981B2C1BCFD900918560 /* Cloud.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cloud.sks; sourceTree = "<group>"; };
+		8736981D2C1C670B00918560 /* Cloud2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cloud2.sks; sourceTree = "<group>"; };
 		87ED7C8B2C18DA8D000B98F9 /* Collaboration2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED7C8E2C18DA8D000B98F9 /* Collaboration2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration2App.swift; sourceTree = "<group>"; };
 		87ED7C922C18DA8D000B98F9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8736981B2C1BCFD900918560 /* Cloud.sks */,
+				8736981D2C1C670B00918560 /* Cloud2.sks */,
 				3B9B5AA22C1A26F8009CBAFC /* RainFall.sks */,
 				3B9B5A972C1A22B1009CBAFC /* Stars.sks */,
 				3B9B5A952C1A22A6009CBAFC /* Snow.sks */,
@@ -122,6 +125,15 @@
 				BAA6A8622C19CF6F00E60115 /* SunMoonView.swift */,
 			);
 			path = "Animation Views";
+			sourceTree = "<group>";
+		};
+		8736981F2C1C6E1A00918560 /* Helper Views */ = {
+			isa = PBXGroup;
+			children = (
+				87ED7CB12C199BFE000B98F9 /* CustomSearchBar.swift */,
+				87ED7CB32C199C2C000B98F9 /* CitiesList.swift */,
+			);
+			path = "Helper Views";
 			sourceTree = "<group>";
 		};
 		87ED7C822C18DA8D000B98F9 = {
@@ -196,8 +208,7 @@
 			children = (
 				87ED7CA22C18DBE7000B98F9 /* SearchPageView.swift */,
 				87ED7CA82C18DC43000B98F9 /* SearchPageViewModel.swift */,
-				87ED7CB12C199BFE000B98F9 /* CustomSearchBar.swift */,
-				87ED7CB32C199C2C000B98F9 /* CitiesList.swift */,
+				8736981F2C1C6E1A00918560 /* Helper Views */,
 			);
 			path = "Search Page";
 			sourceTree = "<group>";
@@ -266,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8736981E2C1C670B00918560 /* Cloud2.sks in Resources */,
 				3B9B5A982C1A22B1009CBAFC /* Stars.sks in Resources */,
 				8736981C2C1BCFD900918560 /* Cloud.sks in Resources */,
 				87ED7C982C18DA8F000B98F9 /* Preview Assets.xcassets in Resources */,

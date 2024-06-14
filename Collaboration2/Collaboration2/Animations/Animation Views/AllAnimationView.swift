@@ -52,8 +52,7 @@ struct AllAnimationView: View {
             )
         case "01n":
             ZStack {
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Stars.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                stars
                 
                 SunMoonView(sun: false)
             }
@@ -63,8 +62,7 @@ struct AllAnimationView: View {
         case "02d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -72,8 +70,7 @@ struct AllAnimationView: View {
         case "02n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -81,8 +78,7 @@ struct AllAnimationView: View {
         case "03d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -90,8 +86,7 @@ struct AllAnimationView: View {
         case "03n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -99,8 +94,7 @@ struct AllAnimationView: View {
         case "04d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -108,8 +102,7 @@ struct AllAnimationView: View {
         case "04n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -117,9 +110,8 @@ struct AllAnimationView: View {
         case "09d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopDay, .linearRainBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -127,9 +119,8 @@ struct AllAnimationView: View {
         case "09n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopNight, .linearRainBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -137,9 +128,8 @@ struct AllAnimationView: View {
         case "10d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
                 SunMoonView()
             }
             .background(
@@ -148,9 +138,8 @@ struct AllAnimationView: View {
         case "10n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
                 SunMoonView(sun: false)
             }
             .background(
@@ -159,9 +148,8 @@ struct AllAnimationView: View {
         case "11d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopDay, .linearRainBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -169,34 +157,28 @@ struct AllAnimationView: View {
         case "11n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                rain
+                halfCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearRainTopNight, .linearRainBottomNight]), startPoint: .top, endPoint: .bottom)
             )
         case "13d":
             ZStack {
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                halfCloud
                 SunMoonView()
-                
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Snow.sks"), options: [.allowsTransparency])
-                    .scaleEffect(1.2)
+                snow
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearSnowTopDay, .linearSnowBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         case "13n":
             ZStack {
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                halfCloud
                 
                 SunMoonView(sun: false)
                 
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Snow.sks"), options: [.allowsTransparency])
-                    .scaleEffect(1.2)
+                snow
                 
             }
             .background(
@@ -205,8 +187,7 @@ struct AllAnimationView: View {
         case "50d":
             ZStack {
                 SunMoonView()
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopDay, .linearCloudyBottomDay]), startPoint: .top, endPoint: .bottom)
@@ -214,8 +195,7 @@ struct AllAnimationView: View {
         case "50n":
             ZStack {
                 SunMoonView(sun: false)
-                SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
-                    .scaleEffect(2)
+                fullCloud
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)
@@ -227,6 +207,45 @@ struct AllAnimationView: View {
                 LinearGradient(gradient: Gradient(colors: [.linearClearTopDay, .linearClearBottomDay]), startPoint: .top, endPoint: .bottom)
             )
         }
+    }
+    
+    //MARK: - fullCloud
+    private var fullCloud: some View {
+        ZStack {
+            SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud.sks"), options: [.allowsTransparency])
+                .scaleEffect(1.5)
+            
+            SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Cloud2.sks"), options: [.allowsTransparency])
+                .scaleEffect(1.5)
+        }
+    }
+    
+    //MARK: - halfCloud
+    private var halfCloud: some View {
+        ZStack {
+            SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud.sks"), options: [.allowsTransparency])
+                .scaleEffect(1.5)
+            
+            SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Cloud2.sks"), options: [.allowsTransparency])
+                .scaleEffect(1.5)
+        }
+    }
+    
+    //MARK: - stars
+    private var stars: some View {
+        SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 0.5, fileName: "Stars.sks"), options: [.allowsTransparency])
+            .scaleEffect(2)
+    }
+    
+    //MARK: - rain
+    private var rain: some View {
+        SpriteView(scene: SpriteAnimationView(anchorX: 1, anchorY: 1, fileName: "RainFall.sks"), options: [.allowsTransparency])
+    }
+    
+    //MARK: - snow
+    private var snow: some View {
+        SpriteView(scene: SpriteAnimationView(anchorX: 0.5, anchorY: 1, fileName: "Snow.sks"), options: [.allowsTransparency])
+            .scaleEffect(1.2)
     }
 }
 

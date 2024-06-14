@@ -44,7 +44,6 @@ struct DailyWeatherView: View {
     }
     
     //MARK: - Inner Structs
-    
     private struct WeeklyWeatherCell: View {
         var imageURL: URL?
         var maxTemp: Double

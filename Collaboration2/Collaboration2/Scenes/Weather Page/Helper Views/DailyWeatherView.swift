@@ -28,10 +28,7 @@ struct DailyWeatherView: View {
             }
             
         }
-        .background(.ultraThinMaterial,
-                    in: RoundedRectangle(cornerRadius: 20,
-                                         style: .continuous))
-        .padding()
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
     
     private var loaderView: some View {
@@ -58,9 +55,9 @@ struct DailyWeatherView: View {
                 
                 Spacer()
                 
-               AsyncImageForIcon(width: 60,
-                                 height: 60,
-                                 imageURL: imageURL)
+                AsyncImageForIcon(width: 60,
+                                  height: 60,
+                                  imageURL: imageURL)
                 
                 Spacer()
                 

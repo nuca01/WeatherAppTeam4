@@ -37,6 +37,8 @@ struct CloudView: View {
                 }
             }
         }
+        .ignoresSafeArea()
+
     }
 }
 

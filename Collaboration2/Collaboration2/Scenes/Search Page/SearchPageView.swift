@@ -28,9 +28,14 @@ struct SearchPageView: View {
             CustomSearchBar(isSearching: $viewModel.isSearching, searchText: $viewModel.searchQuery)
             
             ScrollView{
-                if viewModel.isSearching {
-                    CitiesList(list: viewModel.cities ?? [])
+                if viewModel.isSearching && !viewModel.searchQuery.isEmpty {
+                    CitiesList(list: viewModel.cities ?? [], cityAdded: {
+                        viewModel.isSearching = false
+                        viewModel.searchQuery = ""
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    })
                         .modelContext(context)
+
                 } else {
                     weatherList
                         .padding(.horizontal)
@@ -47,7 +52,7 @@ struct SearchPageView: View {
             ForEach(viewModel.citiesAndWeathers) { weather in
                 weatherCellWith(
                     name: weather.name,
-                    temperature: weather.temperature, 
+                    temperature: weather.temperature,
                     description: weather.info ?? ""
                 )
                 .onTapGesture {
@@ -76,7 +81,6 @@ struct SearchPageView: View {
                 
                 Text(description)
                     .font(.system(size: 10))
-                
             }
             
             Spacer()
@@ -101,13 +105,4 @@ struct SearchPageView: View {
     }
 }
 
-#Preview {
-    var config = ModelConfiguration(isStoredInMemoryOnly: true)
-    var container = try! ModelContainer(for: City.self, configurations: config)
-
-    @State var city: City = City(name: "Tbilisi", latitude: 41.6934591, longitude: 44.8014495)
-
-    return SearchPageView(viewModel: SearchPageViewModel(modelContext: container.mainContext), city: $city)
-        .modelContainer(container)
-}
 

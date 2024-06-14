@@ -34,7 +34,5 @@ struct CurrentWeatherView: View {
                     in: RoundedRectangle(cornerRadius: 20,
                                          style: .continuous)
         )
-        .padding(16)
-
     }
 }

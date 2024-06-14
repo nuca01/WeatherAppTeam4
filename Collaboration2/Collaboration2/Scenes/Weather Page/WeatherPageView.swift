@@ -23,32 +23,36 @@ struct WeatherPageView: View {
         NavigationStack {
             ZStack {
                 AllAnimationView(weather: "50n")
-                
-                VStack {
-                    ScrollView {
+                ScrollView {
+                    VStack(spacing: 22) {
                         HStack {
                             Spacer()
                             
                             LocationPicker(selectedOption: $city, showSearchPage: $showSearchPage)
-                                .padding(.top, 60)
-                                .offset(x: 50)
+                                .padding(EdgeInsets(top: 60, leading: 0, bottom: 35, trailing: 0))
+                                .offset(x: 64)
                         }
                         
                         CurrentWeatherView(viewModel: viewModel)
                         
                         DetailsInfoForCurrentWeather(viewModel: viewModel)
                         
+                        HourlyWeather(viewModel: viewModel)
+                        
                         DailyWeatherView(viewModel: viewModel)
                     }
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 45, trailing: 16))
                 }
+                
             }
             .onChange(of: city) { oldValue, newValue in
                 viewModel.city = city
                 viewModel.fetch()
             }
             .navigationDestination(isPresented: $showSearchPage) {
-                SearchPageView(viewModel: SearchPageViewModel(modelContext: context),
-                               city: $city)
+                if showSearchPage {
+                    SearchPageView(viewModel: SearchPageViewModel(modelContext: context), city: $city)
+                }
             }
             .ignoresSafeArea()
         }

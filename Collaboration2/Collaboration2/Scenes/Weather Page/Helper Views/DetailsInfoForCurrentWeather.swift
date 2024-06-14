@@ -29,7 +29,6 @@ struct DetailsInfoForCurrentWeather: View {
                     in: RoundedRectangle(cornerRadius: 20,
                                          style: .continuous)
         )
-        .padding()
     }
     
     private var rainView: some View {
@@ -61,6 +60,3 @@ struct DetailsInfoForCurrentWeather: View {
     }
 }
 
-//#Preview {
-//    DetailsInfoForCurrentWeather()
-//}

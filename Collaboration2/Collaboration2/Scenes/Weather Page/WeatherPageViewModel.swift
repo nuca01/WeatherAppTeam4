@@ -27,11 +27,14 @@ class WeatherPageViewModel: ObservableObject {
     
     //MARK: - Methods
     func fetch() {
+        print(url)
         NetworkService.networkService.getData(urlString: url) { (result: Result<Weather, Error>) in
             switch result {
             case .success(let data):
+                print(data)
                 self.weather = data
             case .failure(let error):
+                print("weatherpageVM")
                 print(error.localizedDescription)
             }
         }
@@ -44,7 +47,7 @@ class WeatherPageViewModel: ObservableObject {
     func getHumidity() -> Int {
         guard let weather = weather?.current?.humidity else { return 0 }
         return weather
-    } 
+    }
     
     func getWindSpeed() -> Int {
         guard let weather = weather?.current?.windSpeed else { return 0 }
@@ -57,19 +60,19 @@ class WeatherPageViewModel: ObservableObject {
         }) else { return 0 }
         
         switch weather.rain! {
-            case 0.0:
-                return 0
-            case 0.1...1.0:
-                return 10
-            case 1.1...2.0:
-                return 20
-            case 2.1...5.0:
-                return 50
-            case 5.1...10.0:
-                return 80
-            default:
-                return 100
-            }
+        case 0.0:
+            return 0
+        case 0.1...1.0:
+            return 10
+        case 1.1...2.0:
+            return 20
+        case 2.1...5.0:
+            return 50
+        case 5.1...10.0:
+            return 80
+        default:
+            return 100
+        }
     }
     
     func getDailyWeather() -> [Daily] {
@@ -107,5 +110,35 @@ class WeatherPageViewModel: ObservableObject {
             guard let weather = weather?.daily?[0].temp?.max else { return 0 }
             return Int(weather)
         }
+    }
+    
+    func getWeatherHourly() -> [Hourly]? {
+        weather?.hourly
+    }
+    
+    func convertUnixTo24HR(unixTime: Double) -> String {
+        let date = Date(timeIntervalSince1970: unixTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let formattedTime = dateFormatter.string(from: date)
+        
+        return formattedTime
+    }
+    
+    func getWeatherIconURL(icon: String) -> String {
+        "https://openweathermap.org/img/wn/\(icon).png"
+    }
+    
+    
+    func convertUnixToDate(from unixTime: Double) -> String {
+        let date = Date(timeIntervalSince1970: unixTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM,dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getTodayDate() -> String {
+        guard let todayDate = weather?.daily?[0].dt  else { return "" }
+        return  convertUnixToDate(from: Double(todayDate))
     }
 }

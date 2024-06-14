@@ -11,6 +11,9 @@ import Combine
 import SwiftData
 
 class SearchPageViewModel: ObservableObject {
+    
+    // MARK: - Properties
+    
     @Published var searchQuery: String = ""
     @Published var isSearching: Bool = false
     @Published var cities: [City]?
@@ -18,28 +21,44 @@ class SearchPageViewModel: ObservableObject {
     @Published var citiesAndWeathers: [CityAndWeather] = []
     private var modelContext: ModelContext
     
+        
+    // MARK: - Initialiser
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+        addSubscribers()
+        fetchFromContext()
+    }
+    
+    // MARK: - Helper Functions
+    
     func fetch(with name: String) {
+        print("fetched for searchPageVM name")
         NetworkService.networkService.getData(urlString: url(with: name)) { (result: Result<[City], Error>) in
             switch result {
             case .success(let data):
                 self.cities = data
             case .failure(let error):
+                print("searvhPageVM withString")
+
                 print(error.localizedDescription)
             }
         }
     }
     
     private func fetch(with city: City) {
+        print("fetched for searchPageVM city")
         NetworkService.networkService.getData(urlString: url(with: city)) { (result: Result<BriefWeather, Error>) in
             switch result {
             case .success(let data):
                 self.citiesAndWeathers.append(CityAndWeather(
                     name: city.name,
                     temperature: data.current?.temp,
-                    info: data.current?.weather?[0].description, 
+                    info: data.current?.weather?[0].description,
                     id: city.id
                 ))
             case .failure(let error):
+                print("searvhPageVM with city")
                 print(error.localizedDescription)
             }
         }
@@ -72,15 +91,10 @@ class SearchPageViewModel: ObservableObject {
     
     private func addSubscribers() {
         $searchQuery
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .sink(receiveValue: { searchText in
                 self.fetch(with: searchText)
             })
             .store(in: &cancellables)
-    }
-    
-    init(modelContext: ModelContext) {
-        self.modelContext = modelContext
-        addSubscribers()
-        fetchFromContext()
     }
 }

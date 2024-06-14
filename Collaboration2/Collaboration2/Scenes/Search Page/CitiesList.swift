@@ -13,6 +13,7 @@ struct CitiesList: View {
     @Environment(\.modelContext) var context
     @Query var favoriteCities: [City]
     @State private var tappedCity: City?
+    private var cityAdded: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,18 +34,20 @@ struct CitiesList: View {
                         context.insert(city)
                     }
                     
-                    print(favoriteCities.count)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         tappedCity = nil
                     }
+                    
+                    cityAdded()
                 }
             }
         }
     }
     
-    init(list: [City]) {
+    init(list: [City], cityAdded: @escaping () -> Void) {
         self.list = list
+        self.cityAdded = cityAdded
     }
 }
 

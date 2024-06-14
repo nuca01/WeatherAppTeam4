@@ -187,6 +187,7 @@ struct AllAnimationView: View {
         case "50n":
             ZStack {
                 CloudView()
+//                    .frame(height: 400)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.linearCloudyTopNight, .linearCloudyBottomNight]), startPoint: .top, endPoint: .bottom)

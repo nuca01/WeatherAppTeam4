@@ -30,7 +30,6 @@
 		87ED7CAE2C18E23A000B98F9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CAD2C18E23A000B98F9 /* Weather.swift */; };
 		87ED7CB22C199BFE000B98F9 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CB12C199BFE000B98F9 /* CustomSearchBar.swift */; };
 		87ED7CB42C199C2C000B98F9 /* CitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7CB32C199C2C000B98F9 /* CitiesList.swift */; };
-		BAA6A85F2C19C1E200E60115 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6A85E2C19C1E200E60115 /* CloudView.swift */; };
 		BAA6A8612C19CB9300E60115 /* AllAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6A8602C19CB9200E60115 /* AllAnimationView.swift */; };
 		BAA6A8632C19CF6F00E60115 /* SunMoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6A8622C19CF6F00E60115 /* SunMoonView.swift */; };
 		BAA6A8672C1BBB4A00E60115 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6A8662C1BBB4A00E60115 /* HourlyWeather.swift */; };
@@ -62,7 +61,6 @@
 		87ED7CAD2C18E23A000B98F9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		87ED7CB12C199BFE000B98F9 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		87ED7CB32C199C2C000B98F9 /* CitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesList.swift; sourceTree = "<group>"; };
-		BAA6A85E2C19C1E200E60115 /* CloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudView.swift; sourceTree = "<group>"; };
 		BAA6A8602C19CB9200E60115 /* AllAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAnimationView.swift; sourceTree = "<group>"; };
 		BAA6A8622C19CF6F00E60115 /* SunMoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunMoonView.swift; sourceTree = "<group>"; };
 		BAA6A8662C1BBB4A00E60115 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			children = (
 				3B9B5A9E2C1A2384009CBAFC /* SpriteAnimationView.swift */,
 				CBEF02EE2C19D061001DCAB5 /* BirdsView.swift */,
-				BAA6A85E2C19C1E200E60115 /* CloudView.swift */,
 				BAA6A8602C19CB9200E60115 /* AllAnimationView.swift */,
 				BAA6A8622C19CF6F00E60115 /* SunMoonView.swift */,
 			);
@@ -305,7 +302,6 @@
 				87ED7CB22C199BFE000B98F9 /* CustomSearchBar.swift in Sources */,
 				87ED7CAE2C18E23A000B98F9 /* Weather.swift in Sources */,
 				BAA6A8632C19CF6F00E60115 /* SunMoonView.swift in Sources */,
-				BAA6A85F2C19C1E200E60115 /* CloudView.swift in Sources */,
 				873698142C1A4E4300918560 /* BriefWeather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

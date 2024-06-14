@@ -6,20 +6,52 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CitiesList: View {
-    var list: [City]
+    private var list: [City]
+    @Environment(\.modelContext) var context
+    @Query var favoriteCities: [City]
+    @State private var tappedCity: City?
+    private var cityAdded: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(list) { city in
                 HStack {
                     Text(city.name ?? "city name unavailable")
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        .frame(alignment: .leading)
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     
                     Spacer()
+                }
+                .background(tappedCity == city ? Color.black.opacity(0.2) : Color.clear)
+                .onTapGesture {
+                    tappedCity = city
+                    
+                    addFavoriteCity(city: city)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        tappedCity = nil
+                    }
+                    
+                    cityAdded()
                 }
             }
         }
     }
+    
+    private func addFavoriteCity(city: City) {
+        if !favoriteCities.contains(where: { favoriteCity in
+            favoriteCity.latitude == city.latitude && favoriteCity.longitude == city.longitude
+        }) {
+            context.insert(city)
+        }
+    }
+    
+    init(list: [City], cityAdded: @escaping () -> Void) {
+        self.list = list
+        self.cityAdded = cityAdded
+    }
 }
+

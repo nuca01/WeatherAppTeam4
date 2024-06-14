@@ -11,29 +11,74 @@ import Combine
 import SwiftData
 
 class SearchPageViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var searchQuery: String = ""
-    var isSearching: Bool = false
+    @Published var isSearching: Bool = false
     @Published var cities: [City]?
     private var cancellables = Set<AnyCancellable>()
+    @Published var citiesAndWeathers: [CityAndWeather] = []
+    private var modelContext: ModelContext
     
+        
+    // MARK: - Initialiser
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+        addSubscribers()
+        fetchFromContext()
+    }
+    
+    // MARK: - Helper Functions
     func fetch(with name: String) {
+        print("fetched for searchPageVM name")
         NetworkService.networkService.getData(urlString: url(with: name)) { (result: Result<[City], Error>) in
             switch result {
             case .success(let data):
                 self.cities = data
             case .failure(let error):
+                print("searvhPageVM withString")
+
                 print(error.localizedDescription)
             }
         }
     }
     
-//    func fetchFromContext() {
-//        let fetchDescriptor: FetchDescriptor<City> = FetchDescriptor()
-//        favoriteMovies = (try? (modelContext.fetch(fetchDescriptor))) ?? []
-//    }
-//    
+    private func fetch(with city: City) {
+        print("fetched for searchPageVM city")
+        NetworkService.networkService.getData(urlString: url(with: city)) { (result: Result<BriefWeather, Error>) in
+            switch result {
+            case .success(let data):
+                self.citiesAndWeathers.append(CityAndWeather(
+                    name: city.name,
+                    temperature: data.current?.temp,
+                    info: data.current?.weather?[0].description,
+                    id: city.id
+                ))
+            case .failure(let error):
+                print("searvhPageVM with city")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchFromContext() {
+        citiesAndWeathers = []
+        let fetchDescriptor: FetchDescriptor<City> = FetchDescriptor(sortBy: [SortDescriptor(\.name)])
+        let favoritedCities = (try? (modelContext.fetch(fetchDescriptor))) ?? []
+        for city in favoritedCities {
+            fetch(with: city)
+        }
+    }
+    
+    private func url(with city: City) -> String {
+        let firstPart = "https://openweathermap.org/data/2.5/onecall?lat="
+        let lanLon = "\(city.latitude ?? 51.5085)" + "&lon=" + "\(city.longitude ?? -0.1257)"
+        let appID = "&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02"
+        
+        return firstPart + lanLon + appID
+    }
+    
     private func url(with name: String) -> String {
-        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=VOEXrxYcGtySvZ0i1p8qU3q3EMW212hCTdotHR7s&name="
+        let firstPart = "https://api.api-ninjas.com/v1/city?x-api-key=2IV2mg2XUticUWdQNWI6XmSbNVb2qO8DmveNoL2N&name="
         let name = name
         let limit = "&limit=30"
         
@@ -42,13 +87,10 @@ class SearchPageViewModel: ObservableObject {
     
     private func addSubscribers() {
         $searchQuery
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .sink(receiveValue: { searchText in
                 self.fetch(with: searchText)
             })
             .store(in: &cancellables)
-    }
-    
-    init() {
-        addSubscribers()
     }
 }
